@@ -153,6 +153,11 @@ class ComparaisonsPageController {
       }));
       this.legendField2 = cube.qHyperCube.qDimensionInfo[0].qFallbackTitle;
     }).then(object => this.qlikObj.push(object));
+
+    let dim = this.stateService.getState('dimension').title.toUpperCase();
+    let fnToTranser = (dim === 'inst'.toUpperCase()) ? 
+                      this.config["transfer-field-inst"] : this.config["transfer-field-etab"]; 
+    this.qlikService.fieldStateTransfer(fnToTranser, "$", "GrRef");
   }
 
 
