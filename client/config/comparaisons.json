@@ -252,6 +252,8 @@
     "stream-field": "%Stream",
     "measure-field": "%EtalonnageMeasureDesc",
     "dimension-field": "%EtalonnageDimensionDesc",
+    "transfer-field-etab": "EstablishmentDesc",
+    "transfer-field-inst": "HospitalDesc",
     "stack-field": "%EtalonnageStackDesc",
     "ref-type-variable": "vRefType",
     "cost-type-variable": "vCostType",
