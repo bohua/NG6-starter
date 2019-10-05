@@ -1,10 +1,10 @@
 var config = {
-  "host": "localhost",
+  "host": "rd-jzs-mashup.rdlund.qliktech.com",
   "prefix": "/",
-  "port": "4848",
-  "isSecure": false
+  "port": "443",
+  "isSecure": true
 };
-var appId = "Portal_DEV.qvf";
+var appId = "0be01126-c204-46db-9ff2-7d995c3a4d9e";
 var baseUrl = (config.isSecure ? "https://" : "http://") + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources";
 
 window.require.config({
