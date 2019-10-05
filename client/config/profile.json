@@ -1,0 +1,294 @@
+{
+    "streams": [
+        {
+            "id": 1,
+            "title": "Courte durée",
+            "value": "Courte durée",
+            "measures": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "stacks": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        {
+            "id": 2,
+            "title": "CDJ",
+            "value": "CDJ",
+            "measures": [
+                1,
+                2,
+                3
+            ],
+            "stacks": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Urgence",
+            "value": "Urgence",
+            "measures": [
+                1,
+                2,
+                3,
+                7,
+                8,
+                9
+            ],
+            "stacks": [
+                1,
+                6,
+                7,
+                8,
+                5
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Amb autres",
+            "value": "Amb autres",
+            "measures": [
+                1,
+                2,
+                3,
+                6
+            ],
+            "stacks": [
+                1,
+                5
+            ]
+        }
+    ],
+    "measures": [
+        {
+            "id": 1,
+            "title": "Coût total",
+            "subtitle": "-",
+            "icon": "far fa-money-bill-alt",
+            "color": "blue",
+            "value": "Coût total"
+        },
+        {
+            "id": 2,
+            "title": "Coût moyen",
+            "subtitle": "-",
+            "icon": "far fa-balance-scale",
+            "color": "green",
+            "value": "Coût moyen"
+        },
+        {
+            "id": 3,
+            "title": "Nombre d'épisodes",
+            "subtitle": "-",
+            "icon": "fas fa-medkit",
+            "color": "purple",
+            "value": "Nombre d'épisodes"
+        },
+        {
+            "id": 4,
+            "title": "DMS (jours)",
+            "subtitle": "-",
+            "icon": "fas fa-calendar-alt",
+            "color": "orange",
+            "value": "DMS (jours)"
+        },
+        {
+            "id": 5,
+            "title": "Équivalents-lits (Jours / 365)",
+            "subtitle": "-",
+            "icon": "fas fa-bed",
+            "color": "maroon",
+            "value": "Équivalents-lits (Jours / 365)"
+        },
+        {
+            "id": 6,
+            "title": "Nombre d'usagers",
+            "subtitle": "-",
+            "icon": "fas fa-users",
+            "color": "darkgreen",
+            "value": "Nombre d'usagers"
+        },
+        {
+            "id": 7,
+            "title": "% sur civière",
+            "subtitle": "-",
+            "icon": "fa fa-pie-chart",
+            "color": "orange",
+            "value": "% sur civière"
+        },
+        {
+            "id": 8,
+            "title": "DMS ambulant (heures)",
+            "subtitle": "-",
+            "icon": "fa fa-stethoscope",
+            "color": "maroon",
+            "value": "DMS ambulant (heures)"
+        },
+        {
+            "id": 9,
+            "title": "DMS civière (heures)",
+            "subtitle": "-",
+            "icon": "fas fa-hourglass-start",
+            "color": "darkgreen",
+            "value": "DMS civière (heures)"
+        }
+    ],
+    "stacks": [
+        {
+            "id": 1,
+            "title": "Groupes d'âge",
+            "value": "Groupes d’âge normaux",
+            "alt": [
+                "Groupes d’âge pédiatriques",
+                "Groupes d’âge gériatriques"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Gravité",
+            "value": "Gravité"
+        },
+        {
+            "id": 3,
+            "title": "Typ/Atyp",
+            "value": "Typ/Atyp"
+        },
+        {
+            "id": 4,
+            "title": "Type de soins",
+            "value": "Type de soins"
+        },
+        {
+            "id": 5,
+            "title": "Type de coûts",
+            "value": "Type de coûts"
+        },
+        {
+            "id": 6,
+            "title": "Priorité triage",
+            "value": "Priorité triage"
+        },
+        {
+            "id": 7,
+            "title": "Destination",
+            "value": "Destination"
+        },
+        {
+            "id": 8,
+            "title": "Mode d'arrivée",
+            "value": "Mode d'arrivée"
+        }
+    ],
+    "stack-mode": [
+        {
+            "id": 1,
+            "title": "#",
+            "stacks": [
+                1,
+                2,
+                3,
+                4
+            ]
+        },
+        {
+            "id": 2,
+            "title": "%",
+            "stacks": [
+                1,
+                2,
+                3,
+                4
+            ]
+        },
+        {
+            "id": 3,
+            "title": "$",
+            "stacks": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        {
+            "id": 4,
+            "title": "!",
+            "stacks": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        }
+    ],
+    "dimensions": [
+        {
+            "id": 1,
+            "title": "Étab",
+            "value": "Étab"
+        },
+        {
+            "id": 2,
+            "title": "Inst",
+            "value": "Inst"
+        }
+    ],
+    "refTypes": [
+        {
+            "id": 1,
+            "title": "Moyenne",
+            "value": 1,
+            "colorClass": "tab-moy"
+        },
+        {
+            "id": 2,
+            "title": "Médiane",
+            "value": 2,
+            "colorClass": "tab-med"
+        }
+    ],
+    "costTypes": [
+        {
+            "id": 1,
+            "title": "Coûts directs",
+            "value": 1
+        },
+        {
+            "id": 2,
+            "title": "Coûts totaux",
+            "value": 2
+        }
+    ],
+    "profile-main-chart": "HmvEpKU",
+    "profile-ref-values": "DXddA",
+    "profile-num-comp-table": "KeUMu",
+    "profile-per-comp-table": "KeUMu",
+    "profile-sharp-table": "nNt",
+    "profile-percentage-table": "MKSuzvr",
+    "stream-field": "%Stream",
+    "measure-field": "%EtalonnageMeasureDesc",
+    "dimension-field": "%EtalonnageDimensionDesc",
+    "transfer-field-etab": "EstablishmentDesc",
+    "transfer-field-inst": "HospitalDesc",
+    "stack-field": "%EtalonnageStackDesc",
+    "ref-type-variable": "vRefType",
+    "cost-type-variable": "vCostType",
+    "table-mode-variable": "vTableMode",
+    "stack-mode-variable": "vStackMode"
+}
