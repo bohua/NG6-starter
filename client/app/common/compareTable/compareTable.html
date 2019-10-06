@@ -1,4 +1,4 @@
-<table class="table compare-table">
+<table ng-if="$ctrl.horizontalHeader!='0'" class="table compare-table">
   <thead>
     <tr>
       <th class="compare-table-title-col"></th>
@@ -15,4 +15,23 @@
       </td>
     </tr>
   </tbody>
+</table>
+
+<table ng-if="$ctrl.horizontalHeader=='0'" class="table compare-table compare-table-vertical-header">
+  <thead>
+      <tr>
+        <th></th>
+        <th ng-repeat="hc in $ctrl.data[0]">{{hc}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="bg-{{$ctrl.refColor}}"><strong>Gr réf.</strong></td>
+        <td ng-repeat="cell1 in $ctrl.data[1]"> {{cell1}}</td>
+      </tr>
+      <tr>
+        <td class="bg-yellow"><strong>Gr comp</strong></td>
+        <td ng-repeat="cell2 in $ctrl.data[2]"> {{cell2}}</td>
+      </tr>
+    </tbody>
 </table>

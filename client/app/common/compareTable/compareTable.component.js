@@ -4,9 +4,11 @@ import './compareTable.scss';
 
 let compareTableComponent = {
   bindings: {
+    header: '<',
     data: '<',
     refColor: '<',
-    refType: '<'
+    refType: '<',
+    horizontalHeader: '<'
   },
   template,
   controller

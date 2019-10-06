@@ -61,21 +61,29 @@
 
             <div class="custom-content-wrapper tab-border bottom-tab-wrapper" ng-show="$ctrl.viewMode=='chart'">
               <div class=" tab-bottom chart-wrap">
-                <h2>Regroupements de natures (sommaire)</h2>
-                <ul class="nav nav-tabs">
-                  <li ng-click="$ctrl.setStackMode('#')"><a ng-class="{active: $ctrl.stackMode=='#'}"><i
-                        class="fas fa-hashtag"></i></a></li>
-                  <li ng-click="$ctrl.setStackMode('%')"><a ng-class="{active: $ctrl.stackMode=='%'}"><i
-                        class="fal fa-percentage"></i></a></li>
-                </ul>
-                <div class="chart-wrapper" ng-show="$ctrl.stackMode=='#'">
-                  <div id="QV04a" class="com-table-wrapper">
-                    <compare-table data="$ctrl.numCompTableData" ref-color="$ctrl.measure.color" ref-type="$ctrl.refType"></compare-table>
-                  </div>
-                </div>
-                <div class="chart-wrapper" ng-show="$ctrl.stackMode=='%'">
-                  <div id="QV04b" class="com-table-wrapper">
-                    <compare-table data="$ctrl.perCompTableData" ref-color="$ctrl.measure.color" ref-type="$ctrl.refType"></compare-table>
+                <div class="tab-content">
+                  <div id="profil-court-moy-b-tab1" class="tab-pane fade in active">
+                    <h2>Regroupements de natures (sommaire)</h2>
+                    <ul class="nav nav-tabs">
+                      <li ng-click="$ctrl.setStackMode('#')"><a ng-class="{active: $ctrl.stackMode=='#'}"><i
+                            class="fas fa-hashtag"></i></a></li>
+                      <li ng-click="$ctrl.setStackMode('%')"><a ng-class="{active: $ctrl.stackMode=='%'}"><i
+                            class="fal fa-percentage"></i></a></li>
+                    </ul>
+                    <div class="tab-content" ng-show="$ctrl.stackMode=='#'">
+                      <div id="profil-court-moy-b-tab1" class="tab-pane fade in active">
+                        <div id="QV04a" class="profil-table-wrapper custom-scrollbar">
+                          <compare-table data="$ctrl.numCompTableData" header="$ctrl.numCompTableHeader" ref-color="$ctrl.measure.color" ref-type="$ctrl.refType" horizontal-header="0"></compare-table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-content" ng-show="$ctrl.stackMode=='%'">
+                      <div id="profil-court-moy-b-tab1" class="tab-pane fade in active">
+                        <div id="QV04b" class="profil-table-wrapper custom-scrollbar">
+                            <compare-table data="$ctrl.perCompTableData" header="$ctrl.perCompTableHeader" ref-color="$ctrl.measure.color" ref-type="$ctrl.refType" horizontal-header="0"></compare-table>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

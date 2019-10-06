@@ -160,8 +160,8 @@ class ProfilePageController {
         });
       });
 
+      this.numCompTableData = _.zip(... Object.keys(compTableData).map(key => [key, ...compTableData[key]])) ;
       this.numCompTableHeader = compTableHeader;
-      this.numCompTableData = Object.keys(compTableData).map(key => [key, ...compTableData[key]]);
 
     }).then(object => this.qlikObj.push(object));
 
@@ -192,8 +192,8 @@ class ProfilePageController {
         });
       });
 
+      this.perCompTableData = _.zip(... Object.keys(compTableData).map(key => [key, ...compTableData[key]]) );
       this.perCompTableHeader = compTableHeader;
-      this.perCompTableData = Object.keys(compTableData).map(key => [key, ...compTableData[key]]);
 
     }).then(object => this.qlikObj.push(object));
 
