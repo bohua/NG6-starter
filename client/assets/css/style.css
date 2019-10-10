@@ -8106,6 +8106,69 @@ body {
     .com-table-wrapper tr.active td:last-child {
       border-right: 2px solid #000; }
 
+.profil-table-wrapper {
+  padding-top: 15px;
+  overflow: auto; }
+  .profil-table-wrapper .table {
+    min-width: 1600px; }
+    .profil-table-wrapper .table thead th:first-child {
+      background: #FFF !important; }
+    .profil-table-wrapper .table th, .profil-table-wrapper .table td {
+      padding: 15px;
+      font-size: 12px;
+      text-align: center;
+      background: #f8f9fa;
+      color: #848484;
+      border: 3px solid #fff; }
+      .profil-table-wrapper .table th.bg-blue, .profil-table-wrapper .table td.bg-blue {
+        background: #008ce5;
+        color: #FFF;
+        font-size: 12px; }
+      .profil-table-wrapper .table th.bg-green, .profil-table-wrapper .table td.bg-green {
+        background: #2D9CA5;
+        color: #FFF;
+        font-size: 12px; }
+      .profil-table-wrapper .table th.bg-purple, .profil-table-wrapper .table td.bg-purple {
+        background: #76478A;
+        color: #FFF;
+        font-size: 12px; }
+      .profil-table-wrapper .table th.bg-orange, .profil-table-wrapper .table td.bg-orange {
+        background: #F4764D;
+        color: #FFF;
+        font-size: 12px; }
+      .profil-table-wrapper .table th.bg-maroon, .profil-table-wrapper .table td.bg-maroon {
+        background: #993368;
+        color: #FFF;
+        font-size: 12px; }
+      .profil-table-wrapper .table th.bg-darkgreen, .profil-table-wrapper .table td.bg-darkgreen {
+        background: #417E64;
+        color: #FFF;
+        font-size: 12px; }
+      .profil-table-wrapper .table th.bg-yellow, .profil-table-wrapper .table td.bg-yellow {
+        background: #feb044;
+        color: #FFF;
+        font-size: 12px; }
+    .profil-table-wrapper .table td {
+      font-size: 14px; }
+      .profil-table-wrapper .table td strong {
+        font-weight: 600;
+        color: #fff; }
+  .profil-table-wrapper tr.active td {
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    background: #f8f9fa;
+    cursor: pointer; }
+    .profil-table-wrapper tr.active td:first-child {
+      border-left: 2px solid #000; }
+    .profil-table-wrapper tr.active td:last-child {
+      border-right: 2px solid #000; }
+  .profil-table-wrapper .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+    height: 8px;
+    background: transparent; }
+  .profil-table-wrapper .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+    height: 8px;
+    background: #ebebeb; }
+  
 .reference-lists {
   display: -webkit-box;
   display: -ms-flexbox;

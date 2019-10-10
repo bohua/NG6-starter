@@ -1,0 +1,121 @@
+<div class="profile-page">
+  <navbar></navbar>
+
+  <section class="main-tab">
+    <div class="container-fluid">
+      <stream-bar streams="$ctrl.config.streams" on-stream-changed="$ctrl.onStreamChanged(streams)"
+        qlik-field="$ctrl.config['stream-field']"></stream-bar>
+
+      <div class="row inner-container">
+        <div class="col-xl-8 col-sm-12 col-quebec-left">
+          <div id="leftTabContent">
+            <div class="custom-content-wrapper tab-border">
+              <ul class="nav nav-tabs icoTab">
+                <li class="nav-item">
+                  <a ng-class="{active: $ctrl.viewMode=='chart'}">
+                    <i class="far fa-chart-bar" ng-click="$ctrl.setChartView()"></i>
+                  </a>
+                </li>
+                <li class="nav-item has-child" ng-class="{active: $ctrl.viewMode=='table'}">
+                  <a class="nav-link tab-table" ng-click="$ctrl.setTableView()">
+                    <i class="fal fa-table"></i>
+                  </a>
+                  <ul class="sub-items">
+                    <li class="nav-item">
+                      <a class="sub-nav-link" ng-class="{active: $ctrl.tableMode=='#'}">
+                        <i class="fas fa-hashtag" ng-click="$ctrl.setHashtagTable()"></i>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="sub-nav-link" ng-class="{active: $ctrl.tableMode=='%'}">
+                        <i class="fal fa-percentage" ng-click="$ctrl.setPercentageTable()"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" ng-click="$ctrl.exportTable()">Export</a>
+                </li>
+              </ul>
+              <div ng-show="$ctrl.viewMode=='chart'">
+                <h2>{{$ctrl.measure.title}}</h2>
+                <div class="chart-wrapper">
+                  <div id="QV01" class="profile-main-chart"></div>
+                </div>
+              </div>
+
+              <div ng-show="$ctrl.viewMode=='table'">
+                <h2>TABLEAU DES DONNÉES</h2>
+                <div class="table-wrapper">
+                  <div id="QV03a" class="scrolling-container" ng-show="$ctrl.tableMode=='#'">
+                    <straight-table headers="$ctrl.sharpTableHeaders" data="$ctrl.sharpTableData"></straight-table>
+                  </div>
+
+                  <div id="QV03b" class="scrolling-container" ng-show="$ctrl.tableMode=='%'">
+                    <straight-table headers="$ctrl.percentageTableHeaders" data="$ctrl.percentageTableData">
+                    </straight-table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="custom-content-wrapper tab-border bottom-tab-wrapper" ng-show="$ctrl.viewMode=='chart'">
+              <div class=" tab-bottom chart-wrap">
+                <div class="tab-content">
+                  <div id="profil-court-moy-b-tab1" class="tab-pane fade in active">
+                    <h2>Regroupements de natures (sommaire)</h2>
+                    <ul class="nav nav-tabs">
+                      <li ng-click="$ctrl.setStackMode('#')"><a ng-class="{active: $ctrl.stackMode=='#'}"><i
+                            class="fas fa-hashtag"></i></a></li>
+                      <li ng-click="$ctrl.setStackMode('%')"><a ng-class="{active: $ctrl.stackMode=='%'}"><i
+                            class="fal fa-percentage"></i></a></li>
+                    </ul>
+                    <div class="tab-content" ng-show="$ctrl.stackMode=='#'">
+                      <div id="profil-court-moy-b-tab1" class="tab-pane fade in active">
+                        <div id="QV04a" class="profil-table-wrapper custom-scrollbar">
+                          <compare-table data="$ctrl.numCompTableData" header="$ctrl.numCompTableHeader" ref-color="$ctrl.measure.color" ref-type="$ctrl.refType" horizontal-header="0"></compare-table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-content" ng-show="$ctrl.stackMode=='%'">
+                      <div id="profil-court-moy-b-tab1" class="tab-pane fade in active">
+                        <div id="QV04b" class="profil-table-wrapper custom-scrollbar">
+                            <compare-table data="$ctrl.perCompTableData" header="$ctrl.perCompTableHeader" ref-color="$ctrl.measure.color" ref-type="$ctrl.refType" horizontal-header="0"></compare-table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-12 col-padding-left col-quebec-right">
+          <menu-tab-right ng-if="$ctrl.showRightMenu" measure="$ctrl.measure" dimension="$ctrl.dimension"
+            stack="$ctrl.stack" qlik-config="$ctrl.config" streams="$ctrl.streams"
+            on-measure-changed="$ctrl.onMeasureChanged(measure)"
+            on-dimension-changed="$ctrl.onDimensionChanged(dimension)" on-stack-changed="$ctrl.onStackChanged(stack)"
+            on-ref-type-changed="$ctrl.onRefTypeChanged(refType)"
+            on-cost-type-changed="$ctrl.onCostTypeChanged(costType)">
+          </menu-tab-right>
+        </div>
+      </div>
+  </section>
+
+
+
+  <footer class="footer">
+    <div class="container-fluid">
+      <div id="CurrentSelections"></div>
+      <div class="footer-content">
+        <div class="footer-content-wrap">
+          <span class="text">Optimisé par</span>
+          <div class="footer-logo">
+            <a href="#">
+              <img src="assets/images/footer-logo.png" alt="Qlik">
+            </a>
+          </div>
+        </div>
+      </div>
+  </footer>
+</div>
