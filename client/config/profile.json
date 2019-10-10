@@ -88,17 +88,20 @@
         {
             "id": 1,
             "title": "Regroupements de natures (sommaire)",
-            "value": "Regroupements de natures (sommaire)"
+            "value": "Regroupements de natures (sommaire)",
+            "long": true
         },
         {
             "id": 2,
             "title": "Paniers de coûts",
-            "value": "Paniers de coûts"
+            "value": "Paniers de coûts",
+            "long": true
         },
         {
             "id": 3,
             "title": "Pre/Per/Post",
-            "value": "Pre/Per/Post"
+            "value": "Pre/Per/Post",
+            "long": true
         }
     ],
     "stack-mode": [
