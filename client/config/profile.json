@@ -4,14 +4,7 @@
             "id": 1,
             "title": "Courte durée",
             "value": "Courte durée",
-            "measures": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6
-            ],
+            "measures": [1, 2, 3, 4],
             "stacks": [
                 1,
                 2,
@@ -24,11 +17,7 @@
             "id": 2,
             "title": "CDJ",
             "value": "CDJ",
-            "measures": [
-                1,
-                2,
-                3
-            ],
+            "measures": [1, 2, 3, 4],
             "stacks": [
                 1,
                 2,
@@ -41,14 +30,7 @@
             "id": 3,
             "title": "Urgence",
             "value": "Urgence",
-            "measures": [
-                1,
-                2,
-                3,
-                7,
-                8,
-                9
-            ],
+            "measures": [1, 2, 3, 4],
             "stacks": [
                 1,
                 6,
@@ -61,12 +43,7 @@
             "id": 4,
             "title": "Amb autres",
             "value": "Amb autres",
-            "measures": [
-                1,
-                2,
-                3,
-                6
-            ],
+            "measures": [1, 2, 3, 4],
             "stacks": [
                 1,
                 5
@@ -100,141 +77,53 @@
         },
         {
             "id": 4,
-            "title": "DMS (jours)",
+            "title": "Variance de coût total",
             "subtitle": "-",
             "icon": "fas fa-calendar-alt",
             "color": "orange",
-            "value": "DMS (jours)"
-        },
-        {
-            "id": 5,
-            "title": "Équivalents-lits (Jours / 365)",
-            "subtitle": "-",
-            "icon": "fas fa-bed",
-            "color": "maroon",
-            "value": "Équivalents-lits (Jours / 365)"
-        },
-        {
-            "id": 6,
-            "title": "Nombre d'usagers",
-            "subtitle": "-",
-            "icon": "fas fa-users",
-            "color": "darkgreen",
-            "value": "Nombre d'usagers"
-        },
-        {
-            "id": 7,
-            "title": "% sur civière",
-            "subtitle": "-",
-            "icon": "fa fa-pie-chart",
-            "color": "orange",
-            "value": "% sur civière"
-        },
-        {
-            "id": 8,
-            "title": "DMS ambulant (heures)",
-            "subtitle": "-",
-            "icon": "fa fa-stethoscope",
-            "color": "maroon",
-            "value": "DMS ambulant (heures)"
-        },
-        {
-            "id": 9,
-            "title": "DMS civière (heures)",
-            "subtitle": "-",
-            "icon": "fas fa-hourglass-start",
-            "color": "darkgreen",
-            "value": "DMS civière (heures)"
+            "value": "Variance de coût total"
         }
     ],
     "stacks": [
         {
             "id": 1,
-            "title": "Groupes d'âge",
-            "value": "Groupes d’âge normaux",
-            "alt": [
-                "Groupes d’âge pédiatriques",
-                "Groupes d’âge gériatriques"
-            ]
+            "title": "Regroupements de natures (sommaire)",
+            "value": "Regroupements de natures (sommaire)",
+            "long": true
         },
         {
             "id": 2,
-            "title": "Gravité",
-            "value": "Gravité"
+            "title": "Paniers de coûts",
+            "value": "Paniers de coûts",
+            "long": true
         },
         {
             "id": 3,
-            "title": "Typ/Atyp",
-            "value": "Typ/Atyp"
-        },
-        {
-            "id": 4,
-            "title": "Type de soins",
-            "value": "Type de soins"
-        },
-        {
-            "id": 5,
-            "title": "Type de coûts",
-            "value": "Type de coûts"
-        },
-        {
-            "id": 6,
-            "title": "Priorité triage",
-            "value": "Priorité triage"
-        },
-        {
-            "id": 7,
-            "title": "Destination",
-            "value": "Destination"
-        },
-        {
-            "id": 8,
-            "title": "Mode d'arrivée",
-            "value": "Mode d'arrivée"
+            "title": "Pre/Per/Post",
+            "value": "Pre/Per/Post",
+            "long": true
         }
     ],
     "stack-mode": [
         {
             "id": 1,
             "title": "#",
-            "stacks": [
-                1,
-                2,
-                3,
-                4
-            ]
+            "stacks": [1, 2, 3]
         },
         {
             "id": 2,
             "title": "%",
-            "stacks": [
-                1,
-                2,
-                3,
-                4
-            ]
+            "stacks": [1, 2, 3]
         },
         {
             "id": 3,
             "title": "$",
-            "stacks": [
-                1,
-                2,
-                3,
-                4,
-                5
-            ]
+            "stacks": [1, 2]
         },
         {
             "id": 4,
             "title": "!",
-            "stacks": [
-                1,
-                2,
-                3,
-                4,
-                5
-            ]
+            "stacks": [1, 2]
         }
     ],
     "dimensions": [
@@ -281,6 +170,10 @@
     "profile-per-comp-table": "KeUMu",
     "profile-sharp-table": "nNt",
     "profile-percentage-table": "MKSuzvr",
+    "group-ref-list-estab": "FGMrKh",
+    "group-ref-list-inst": "ZXRTfm",
+    "group-comp-list-estab": "MpNYzya",
+    "group-comp-list-inst": "vZLVWD",
     "stream-field": "%Stream",
     "measure-field": "%EtalonnageMeasureDesc",
     "dimension-field": "%EtalonnageDimensionDesc",
