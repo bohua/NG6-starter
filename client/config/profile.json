@@ -4,7 +4,12 @@
             "id": 1,
             "title": "Courte durée",
             "value": "Courte durée",
-            "measures": [1, 2, 3, 4],
+            "measures": [
+                1,
+                2,
+                3,
+                4
+            ],
             "stacks": [
                 1,
                 2,
@@ -17,7 +22,12 @@
             "id": 2,
             "title": "CDJ",
             "value": "CDJ",
-            "measures": [1, 2, 3, 4],
+            "measures": [
+                1,
+                2,
+                3,
+                4
+            ],
             "stacks": [
                 1,
                 2,
@@ -30,7 +40,12 @@
             "id": 3,
             "title": "Urgence",
             "value": "Urgence",
-            "measures": [1, 2, 3, 4],
+            "measures": [
+                1,
+                2,
+                3,
+                4
+            ],
             "stacks": [
                 1,
                 6,
@@ -43,7 +58,12 @@
             "id": 4,
             "title": "Amb autres",
             "value": "Amb autres",
-            "measures": [1, 2, 3, 4],
+            "measures": [
+                1,
+                2,
+                3,
+                4
+            ],
             "stacks": [
                 1,
                 5
@@ -87,20 +107,20 @@
     "stacks": [
         {
             "id": 1,
-            "title": "Regroupements de natures (sommaire)",
-            "value": "Regroupements de natures (sommaire)",
+            "title": "Par regroupement de nature",
+            "value": "Par regroupement de nature",
             "long": true
         },
         {
             "id": 2,
-            "title": "Paniers de coûts",
-            "value": "Paniers de coûts",
+            "title": "Par préfixe de secteur",
+            "value": "Par préfixe de secteur",
             "long": true
         },
         {
             "id": 3,
-            "title": "Pre/Per/Post",
-            "value": "Pre/Per/Post",
+            "title": "Pré/Op/Post",
+            "value": "Pré/Op/Post",
             "long": true
         }
     ],
@@ -108,22 +128,36 @@
         {
             "id": 1,
             "title": "#",
-            "stacks": [1, 2, 3]
+            "stacks": [
+                1,
+                2,
+                3
+            ]
         },
         {
             "id": 2,
             "title": "%",
-            "stacks": [1, 2, 3]
+            "stacks": [
+                1,
+                2,
+                3
+            ]
         },
         {
             "id": 3,
             "title": "$",
-            "stacks": [1, 2]
+            "stacks": [
+                1,
+                2
+            ]
         },
         {
             "id": 4,
             "title": "!",
-            "stacks": [1, 2]
+            "stacks": [
+                1,
+                2
+            ]
         }
     ],
     "dimensions": [
@@ -164,22 +198,22 @@
             "value": 2
         }
     ],
-    "profile-main-chart": "HmvEpKU",
+    "profile-main-chart": "BPLmKjq",
     "profile-ref-values": "DXddA",
-    "profile-num-comp-table": "KeUMu",
-    "profile-per-comp-table": "KeUMu",
-    "profile-sharp-table": "nNt",
-    "profile-percentage-table": "MKSuzvr",
+    "profile-num-comp-table": "HyPeSA",
+    "profile-per-comp-table": "dGybvZ",
+    "profile-sharp-table": "ZjZvE",
+    "profile-percentage-table": "jmpbSt",
     "group-ref-list-estab": "FGMrKh",
     "group-ref-list-inst": "ZXRTfm",
     "group-comp-list-estab": "MpNYzya",
     "group-comp-list-inst": "vZLVWD",
     "stream-field": "%Stream",
-    "measure-field": "%EtalonnageMeasureDesc",
+    "measure-field": "%ProfildecoutsMeasureDesc",
     "dimension-field": "%EtalonnageDimensionDesc",
     "transfer-field-etab": "EstablishmentDesc",
     "transfer-field-inst": "HospitalDesc",
-    "stack-field": "%EtalonnageStackDesc",
+    "stack-field": "%ProfildecoutsFamilyDesc",
     "ref-type-variable": "vRefType",
     "cost-type-variable": "vCostType",
     "table-mode-variable": "vTableMode",
