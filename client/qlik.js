@@ -4,7 +4,7 @@ var config = {
   "port": "4848",
   "isSecure": false
 };
-var appId = "Portal_DEV.qvf";
+var appId = "Portal_DEV_TestApp.qvf";
 var baseUrl = (config.isSecure ? "https://" : "http://") + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources";
 
 window.require.config({
