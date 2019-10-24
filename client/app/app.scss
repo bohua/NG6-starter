@@ -34,7 +34,10 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
-
+.scrolling-container-x {
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
 .footer-content{
   width: 180px!important;
   line-height: 38px;
