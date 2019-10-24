@@ -74,7 +74,6 @@
         {
             "id": 1,
             "title": "Coût total",
-            "subtitle": "-",
             "icon": "far fa-money-bill-alt",
             "color": "blue",
             "value": "Coût total"
@@ -82,7 +81,6 @@
         {
             "id": 2,
             "title": "Coût moyen",
-            "subtitle": "-",
             "icon": "far fa-balance-scale",
             "color": "green",
             "value": "Coût moyen"
@@ -90,7 +88,6 @@
         {
             "id": 3,
             "title": "Nombre d'épisodes",
-            "subtitle": "-",
             "icon": "fas fa-medkit",
             "color": "purple",
             "value": "Nombre d'épisodes"
@@ -98,7 +95,6 @@
         {
             "id": 4,
             "title": "Variance de coût total",
-            "subtitle": "-",
             "icon": "fas fa-calendar-alt",
             "color": "orange",
             "value": "Variance de coût total"
@@ -200,10 +196,10 @@
     ],
     "profile-main-chart": "BPLmKjq",
     "profile-ref-values": "DXddA",
-    "profile-num-comp-table": "HyPeSA",
-    "profile-per-comp-table": "dGybvZ",
-    "profile-sharp-table": "ZjZvE",
-    "profile-percentage-table": "jmpbSt",
+    "profile-sharp-table": "HyPeSA",
+    "profile-percentage-table": "dGybvZ",
+    "profile-num-comp-table": "RXnFVdk",
+    "profile-per-comp-table": "uKWEK",
     "group-ref-list-estab": "FGMrKh",
     "group-ref-list-inst": "ZXRTfm",
     "group-comp-list-estab": "MpNYzya",
@@ -217,5 +213,6 @@
     "ref-type-variable": "vRefType",
     "cost-type-variable": "vCostType",
     "table-mode-variable": "vTableMode",
-    "stack-mode-variable": "vStackMode"
+    "stack-mode-variable": "vStackMode",
+    "default-sel-value": "CHU de Québec - Université Laval"
 }

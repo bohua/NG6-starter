@@ -21,17 +21,17 @@
   <thead>
       <tr>
         <th></th>
-        <th ng-repeat="hc in $ctrl.data[0]">{{hc}}</th>
+        <th ng-repeat="hc in $ctrl.header">{{hc}}</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td class="bg-{{$ctrl.refColor}}"><strong>Gr réf.</strong></td>
-        <td ng-repeat="cell1 in $ctrl.data[1]"> {{cell1}}</td>
+        <td ng-repeat="cell1 in $ctrl.data['Gr réf.'] track by $index"> {{cell1}}</td>
       </tr>
       <tr>
-        <td class="bg-yellow"><strong>Gr comp</strong></td>
-        <td ng-repeat="cell2 in $ctrl.data[2]"> {{cell2}}</td>
+        <td class="bg-yellow"><strong>Gr comp.</strong></td>
+        <td ng-repeat="cell2 in $ctrl.data['Gr comp.'] track by $index"> {{cell2}}</td>
       </tr>
     </tbody>
 </table>

@@ -107,19 +107,25 @@ export default class qlikService {
     )
   }
 
-  fieldStateTransfer(field, src, dst) {
-    let selections = this.app.selectionState(src).selections;
+  fieldSelection(field, state) {
+    let selections = this.app.selectionState(state).selections;
     let sels = selections.filter(s => {return s.fieldName === field;});
     if(sels.length != 1 || sels[0].selectedCount === 0) {
       return;
     }
-    let sel = sels[0];
+    return sels[0];
+  }
+
+  fieldStateTransfer(field, src, dst) {
+    let sel = this.fieldSelection(field, src);
+    if(sel == null) {
+      return;
+    }
     let srcField = this.app.field(sel.fieldName, src).getData();
     srcField.OnData.bind(()=> {
       let selectedValues = srcField.rows.filter(r => {return r.qState==="S";}).map(r => r.qText);
       this.app.field(sel.fieldName, dst).selectValues(selectedValues);
-    })
-    
+    });
   }
 
   destroy(qlikObj) {

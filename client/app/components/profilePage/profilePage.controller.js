@@ -60,9 +60,9 @@ class ProfilePageController {
         let newMeasure = measure;
         let hit = measureData.filter(d => d.name === measure.value);
 
-        if (hit.length > 0) {
-          newMeasure.subtitle = ((this.refType && this.refType.value === 2) ? "MÉD. " : "MOY. ") + hit[0].value;
-        }
+        // if (hit.length > 0) {
+        //   newMeasure.subtitle = ((this.refType && this.refType.value === 2) ? "MÉD. " : "MOY. ") + hit[0].value;
+        // }
         return newMeasure;
       });
 
@@ -87,11 +87,11 @@ class ProfilePageController {
       let visibles = ['Coût directs', 'Coût indirects'];
       visibles = visibles.concat(this.utilService.getMeasuresByStreams(this.streams, this.config.measures).map(measure => measure.title));
 
-      cube.qHyperCube.qMeasureInfo.map(measure => {
+      cube.qHyperCube.qMeasureInfo.filter(m => { return "qFallbackTitle" in m;}).map(measure => {
         let title = measure.qFallbackTitle;
         headers.push({
           title,
-          visible: visibles.indexOf(title) > 0
+          visible: true //visibles.indexOf(title) > 0
         });
       });
 
@@ -119,11 +119,11 @@ class ProfilePageController {
       let visibles = ['Coût directs', 'Coût indirects'];
       visibles = visibles.concat(this.utilService.getMeasuresByStreams(this.streams, this.config.measures).map(measure => measure.title));
 
-      cube.qHyperCube.qMeasureInfo.map(measure => {
+      cube.qHyperCube.qMeasureInfo.filter(m => { return "qFallbackTitle" in m;}).map(measure => {
         let title = measure.qFallbackTitle;
         headers.push({
           title,
-          visible: visibles.indexOf(title) > 0
+          visible: true //visibles.indexOf(title) > 0
         });
       });
 
@@ -160,7 +160,8 @@ class ProfilePageController {
         });
       });
 
-      this.numCompTableData = _.zip(... Object.keys(compTableData).map(key => [key, ...compTableData[key]])) ;
+      //this.numCompTableData = _.zip(... Object.keys(compTableData).map(key => [key, ...compTableData[key]])) ;
+      this.numCompTableData = compTableData;
       this.numCompTableHeader = compTableHeader;
 
     }).then(object => this.qlikObj.push(object));
@@ -192,16 +193,30 @@ class ProfilePageController {
         });
       });
 
-      this.perCompTableData = _.zip(... Object.keys(compTableData).map(key => [key, ...compTableData[key]]) );
+      //this.perCompTableData = _.zip(... Object.keys(compTableData).map(key => [key, ...compTableData[key]]) );
+      this.perCompTableData = compTableData;
       this.perCompTableHeader = compTableHeader;
 
     }).then(object => this.qlikObj.push(object));
 
     //transfer state;
-    let dim = this.stateService.getState('dimension').title.toUpperCase();
-    let fnToTranser = (dim === 'inst'.toUpperCase()) ? 
+    let dim = this.stateService.getState('dimension')
+    let dimTitle = dim ? dim.title.toUpperCase() : null;
+    let fnToTranser = (dimTitle && dimTitle === 'inst'.toUpperCase()) ? 
                       this.config["transfer-field-inst"] : this.config["transfer-field-etab"]; 
     this.qlikService.fieldStateTransfer(fnToTranser, "$", "GrRef");
+
+    //check if we need to apply default selection on Ref Group.
+    let refSelection = this.qlikService.fieldSelection(fnToTranser, "GrRef");
+    if(refSelection == null) {
+      let defaultGrRefSelVariable = this.config["default-sel-variable"];
+      if(defaultGrRefSelVariable === undefined) {
+        let defaultGrRefSelValue = this.config["default-sel-value"];
+        this.qlikService.select(fnToTranser, [defaultGrRefSelValue], "GrRef");
+      } else {
+        this.qlikService.getVariable(defaultGrRefSelVariable, (v) => { this.qlikService.select(fnToTranser, [v], "GrRef"); });
+      }
+    }
   }
 
   exportTable() {
@@ -263,6 +278,8 @@ class ProfilePageController {
   onDimensionChanged(dimension) {
     //this.dimension = dimension;
     this.qlikService.select(this.config["dimension-field"], [dimension.value]);
+    this.qlikService.select(this.config["dimension-field"], [dimension.value], "GrRef");
+    this.qlikService.select(this.config["dimension-field"], [dimension.value], "GrComp");
   }
 
   onStackChanged(stack) {
