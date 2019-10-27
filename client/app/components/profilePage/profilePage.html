@@ -47,11 +47,11 @@
               <div ng-show="$ctrl.viewMode=='table'">
                 <h2>TABLEAU DES DONNÉES</h2>
                 <div class="table-wrapper">
-                  <div id="QV03a" class="scrolling-container" ng-show="$ctrl.tableMode=='#'">
+                  <div id="QV03a" class="scrolling-container-x" ng-show="$ctrl.tableMode=='#'">
                     <straight-table headers="$ctrl.sharpTableHeaders" data="$ctrl.sharpTableData"></straight-table>
                   </div>
 
-                  <div id="QV03b" class="scrolling-container" ng-show="$ctrl.tableMode=='%'">
+                  <div id="QV03b" class="scrolling-container-x" ng-show="$ctrl.tableMode=='%'">
                     <straight-table headers="$ctrl.percentageTableHeaders" data="$ctrl.percentageTableData">
                     </straight-table>
                   </div>
