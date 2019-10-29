@@ -12,9 +12,12 @@ export default class loadService {
     promises.push($http.get("config/etalonnage.json").then(reply => _this.config.etalonnage = reply.data));
     promises.push($http.get("config/comparaisons.json").then(reply => _this.config.comparaisons = reply.data));
     promises.push($http.get("config/profile.json").then(reply => _this.config.profile = reply.data));
-    promises.push(qlikService.applyBookmark("46e599ec-3b58-4556-ae5a-72605691f018"));
-
-    this.initialized = Promise.all(promises);
+    promises.push($http.get("config/system.json").then(reply => _this.config.system = reply.data));
+    
+    this.initialized = Promise.all(promises).then(() => {
+      let bmId = _this.config.system["onopen-bookmark"];
+      qlikService.applyBookmark(bmId);
+    });
   }
 
   loadConfig(name) {
