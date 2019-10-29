@@ -8,5 +8,10 @@
     <tr ng-repeat="row in $ctrl.data">
       <td ng-show="$ctrl.headers[$index].visible" ng-repeat="cell in row track by $index">{{cell}}</td>
     </tr>
+    <tr>
+      <td ng-show="$ctrl.headers[$index].visible" ng-repeat="cell in $ctrl.total track by $index">
+        <strong>{{cell}}</strong>
+      </td>
+    </tr>
   </tbody>
 </table>
