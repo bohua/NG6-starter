@@ -78,8 +78,10 @@ class etalonnagePageController {
     //Bind # table view to the page
     this.sharpTableObj = this.qlikService.bindVisualizationData(this.config["etalonnage-sharp-table"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
-
       this.sharpTableData = data.map(row => (row.map(cell => cell.qText)));
+
+      let totals = ["Grand Total"];
+      this.sharpTotalRow = totals.concat(cube.qHyperCube.qGrandTotalRow.map(cell => cell.qText));
 
       let headers = [];
       cube.qHyperCube.qDimensionInfo.map(dimension => {
@@ -110,8 +112,10 @@ class etalonnagePageController {
     //Bind % table view to the page
     this.perentageTableObj = this.qlikService.bindVisualizationData(this.config["etalonnage-percentage-table"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
-
       this.percentageTableData = data.map(row => (row.map(cell => cell.qText)));
+
+      let totals = ["Grand Total"];
+      this.percentageTotalRow = totals.concat(cube.qHyperCube.qGrandTotalRow.map(cell => cell.qText));
 
       let headers = [];
       cube.qHyperCube.qDimensionInfo.map(dimension => {

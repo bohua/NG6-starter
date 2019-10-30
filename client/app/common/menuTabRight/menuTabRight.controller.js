@@ -188,11 +188,25 @@ class menuTabRightController {
   selectRefType(selected) {
     this.refType = selected;
     this.onRefTypeChanged({ refType: this.refType });
+    let from = (this.refType.value === 1 ? 'Coût médiane' : 'Coût moyen');
+    let to = (this.refType.value === 1 ? 'Coût moyen' : 'Coût médiane');
+    this.qlikConfig.measures.forEach(m => {
+      if(m.title===from) {
+        m.title = to;
+      }
+    });
   }
 
   selectCostType(selected) {
     this.costType = selected;
     this.onCostTypeChanged({ costType: this.costType });
+    let from = (this.costType.value === 1 ? 'Coût total' : 'Coût total - Direct');
+    let to = (this.costType.value === 1 ? 'Coût total - Direct' : 'Coût total');
+    this.qlikConfig.measures.forEach(m => {
+      if(m.title===from) {
+        m.title = to;
+      }
+    });
   }
 
   $onDestroy() {

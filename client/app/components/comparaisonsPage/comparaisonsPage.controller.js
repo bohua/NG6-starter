@@ -93,8 +93,10 @@ class ComparaisonsPageController {
     //Table view data
     this.qlikService.bindVisualizationData(this.config["comparaisons-table"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
-
       this.tableData = data.map(row => (row.map(cell => cell.qText)));
+
+      let totals = ["Grand Total"];
+      this.tableTotalRow = totals.concat(cube.qHyperCube.qGrandTotalRow.map(cell => cell.qText));
 
       let headers = [];
       cube.qHyperCube.qDimensionInfo.map(dimension => {
