@@ -73,7 +73,7 @@
     "measures": [
         {
             "id": 1,
-            "title": "Coût total",
+            "title": "Coût total - Direct",
             "icon": "far fa-money-bill-alt",
             "color": "blue",
             "value": "Coût total"
