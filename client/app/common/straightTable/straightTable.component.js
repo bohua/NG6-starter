@@ -5,7 +5,8 @@ import './straightTable.scss';
 let straightTableComponent = {
   bindings: {
     headers: '<',
-    data: '<'
+    data: '<',
+    total: '<'
   },
   template,
   controller

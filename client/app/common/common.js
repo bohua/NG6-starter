@@ -8,6 +8,7 @@ import NiceSelect from './niceSelect/niceSelect';
 import ChartLegend from './chartLegend/chartLegend';
 import StraightTable from './straightTable/straightTable';
 import CompareTable from './compareTable/compareTable';
+import FootBar from './footBar/footBar';
 
 let commonModule = angular.module('app.common', [
   Navbar,
@@ -18,7 +19,8 @@ let commonModule = angular.module('app.common', [
   NiceSelect,
   StraightTable,
   CompareTable,
-  ChartLegend
+  ChartLegend,
+  FootBar
 ])
 
   .name;

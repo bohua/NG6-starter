@@ -48,12 +48,11 @@
                 <h2>TABLEAU DES DONNÉES</h2>
                 <div class="table-wrapper">
                   <div id="QV03a" class="scrolling-container" ng-show="$ctrl.tableMode=='#'">
-                    <straight-table headers="$ctrl.sharpTableHeaders" data="$ctrl.sharpTableData"></straight-table>
+                    <straight-table headers="$ctrl.sharpTableHeaders" data="$ctrl.sharpTableData" total="$ctrl.sharpTotalRow"></straight-table>
                   </div>
 
                   <div id="QV03b" class="scrolling-container" ng-show="$ctrl.tableMode=='%'">
-                    <straight-table headers="$ctrl.percentageTableHeaders" data="$ctrl.percentageTableData">
-                    </straight-table>
+                    <straight-table headers="$ctrl.percentageTableHeaders" data="$ctrl.percentageTableData" total="$ctrl.percentageTotalRow"></straight-table>
                   </div>
                 </div>
               </div>
@@ -107,20 +106,5 @@
       </div>
   </section>
 
-
-
-  <footer class="footer">
-    <div class="container-fluid">
-      <div id="CurrentSelections"></div>
-      <div class="footer-content">
-        <div class="footer-content-wrap">
-          <span class="text">Optimisé par</span>
-          <div class="footer-logo">
-            <a href="#">
-              <img src="assets/images/footer-logo.png" alt="Qlik">
-            </a>
-          </div>
-        </div>
-      </div>
-  </footer>
+  <foot-bar show-timestamp="true"></foot-bar>
 </div>

@@ -28,7 +28,7 @@
                     <h2>ÉCARTS</h2>
                     <div class="table-wrapper">
                       <div id="QV05" class="scrolling-container">
-                        <straight-table headers="$ctrl.tableHeaders" data="$ctrl.tableData"></straight-table>
+                        <straight-table headers="$ctrl.tableHeaders" data="$ctrl.tableData" total="$ctrl.tableTotalRow"></straight-table>
                       </div>
                     </div>
                   </div>
@@ -107,18 +107,5 @@
       </div>
   </section>
 
-  <footer class="footer">
-    <div class="container-fluid">
-      <div id="CurrentSelections"></div>
-      <div class="footer-content">
-        <div class="footer-content-wrap">
-          <span class="text">Optimisé par</span>
-          <div class="footer-logo">
-            <a href="#">
-              <img src="assets/images/footer-logo.png" alt="Qlik">
-            </a>
-          </div>
-        </div>
-      </div>
-  </footer>
+  <foot-bar show-timestamp="true"></foot-bar>
 </div>

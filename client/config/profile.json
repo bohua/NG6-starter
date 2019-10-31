@@ -73,7 +73,7 @@
     "measures": [
         {
             "id": 1,
-            "title": "Coût total",
+            "title": "Coût total - Direct",
             "icon": "far fa-money-bill-alt",
             "color": "blue",
             "value": "Coût total"
@@ -196,8 +196,8 @@
     ],
     "profile-main-chart": "BPLmKjq",
     "profile-ref-values": "DXddA",
-    "profile-sharp-table": "HyPeSA",
-    "profile-percentage-table": "dGybvZ",
+    "profile-sharp-table": "PuMSMW",
+    "profile-percentage-table": "jStAhv",
     "profile-num-comp-table": "RXnFVdk",
     "profile-per-comp-table": "uKWEK",
     "group-ref-list-estab": "FGMrKh",
