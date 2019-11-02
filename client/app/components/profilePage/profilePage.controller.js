@@ -202,25 +202,6 @@ class ProfilePageController {
       this.perCompTableHeader = compTableHeader;
 
     }).then(object => this.qlikObj.push(object));
-
-    //transfer state;
-    let dim = this.stateService.getState('dimension')
-    let dimTitle = dim ? dim.title.toUpperCase() : null;
-    let fnToTranser = (dimTitle && dimTitle === 'inst'.toUpperCase()) ? 
-                      this.config["transfer-field-inst"] : this.config["transfer-field-etab"]; 
-    this.qlikService.fieldStateTransfer(fnToTranser, "$", "GrRef");
-
-    //check if we need to apply default selection on Ref Group.
-    let refSelection = this.qlikService.fieldSelection(fnToTranser, "GrRef");
-    if(refSelection == null) {
-      let defaultGrRefSelVariable = this.config["default-sel-variable"];
-      if(defaultGrRefSelVariable === undefined) {
-        let defaultGrRefSelValue = this.config["default-sel-value"];
-        this.qlikService.select(fnToTranser, [defaultGrRefSelValue], "GrRef");
-      } else {
-        this.qlikService.getVariable(defaultGrRefSelVariable, (v) => { this.qlikService.select(fnToTranser, [v], "GrRef"); });
-      }
-    }
   }
 
   exportTable() {
@@ -305,7 +286,7 @@ class ProfilePageController {
   }
 
   $onDestroy() {
-    console.log('etalonnagePage component Destroyed');
+    //console.log('etalonnagePage component Destroyed');
 
     this.qlikService.destroy(this.qlikObj);
   }

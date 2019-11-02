@@ -20,6 +20,10 @@ let comparaisonsPageModule = angular.module('comparaisonsPage', [
             'ngInject';
 
             return loadService.loadConfig('comparaisons');
+          },
+          bookmark: (loadService) => {
+            'ngInject';
+            return loadService.applyBookmark();
           }
         }
       });

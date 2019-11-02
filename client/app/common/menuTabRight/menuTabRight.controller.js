@@ -13,7 +13,7 @@ class menuTabRightController {
     this.stateService = stateService;
 
     this.$onDestroy = () => {
-      console.log('menuTabRight component Destroyed');
+      //console.log('menuTabRight component Destroyed');
       if (this.showCompare) {
         this.refGroupCountModelEstab.Validated.unbind(this.refGroupCountEstabListener);
         this.refGroupCountModelInst.Validated.unbind(this.refGroupCountInstListener);
@@ -23,7 +23,9 @@ class menuTabRightController {
 
       this.dimensionField.OnData.unbind(this.dimensionFieldListener);
       this.measureField.OnData.unbind(this.measureFieldListener);
-      this.stackField.OnData.unbind(this.stackFieldListener);
+      if(this.stackField) {
+        this.stackField.OnData.unbind(this.stackFieldListener);
+      }
     }
   }
 
@@ -166,6 +168,9 @@ class menuTabRightController {
     };
     this.stackField = this.qlikService.field([this.qlikConfig["stack-field"]], this.stackFieldListener);
     this.stackFieldListener();
+
+    let dim = this.stateService.getState('dimension');
+    this.setCompDefaults(dim);
   }
 
   setDefaultStateIfEmpty(prop, propConfigs, onlyValue, cond) {
@@ -202,6 +207,51 @@ class menuTabRightController {
     return ret;
   }
 
+  setCompDefaults(dim) {
+    this.setCompDefaultsState(dim, "GrRef");
+    this.setCompDefaultsState(dim, "GrComp");
+  }
+
+  setCompDefaultsState(dim, stateName) {
+    if(this.showCompare) {
+      let dimTitle = dim ? dim.title.toUpperCase() : null;
+      let fnToTranser = (dimTitle && dimTitle === 'inst'.toUpperCase()) ? 
+                        this.qlikConfig["transfer-field-inst"] : this.qlikConfig["transfer-field-etab"];
+      let defaultConfig = (dimTitle && dimTitle === 'inst'.toUpperCase()) ?
+                        this.qlikConfig["defaults"]["inst"][stateName] : this.qlikConfig["defaults"]["etab"][stateName];
+
+      //check if we need to apply default selection on Ref Group.
+      let refSelCallback = (refSelection) => {
+        if(refSelection == null || refSelection.length == 0) {
+          let defaultSelVariable = defaultConfig["variable"];
+          if(defaultSelVariable === undefined) {
+            let defaultSelValue = defaultConfig["value"];
+            if(defaultSelValue === undefined) {
+              console.error('invalid defaults config');
+            } else {
+              this.qlikService.select(fnToTranser, [defaultSelValue], stateName);
+            }
+          } else {
+            this.qlikService.getVariable(defaultSelVariable, (v) => {
+              this.qlikService.select(fnToTranser, [v], stateName); 
+            });
+          }
+        }
+      };
+      let applyDefaultIfEmpty = () => {  this.qlikService.fieldSelectionV2(fnToTranser, stateName, refSelCallback); };
+
+      this.qlikService.fieldSelectionV2(fnToTranser, "$", 
+        (currentSels) => {
+          if(currentSels.length > 0) {
+            this.qlikService.select(fnToTranser, currentSels, stateName).then(applyDefaultIfEmpty);
+          } else {
+            applyDefaultIfEmpty();
+          }
+        }
+      );
+    }
+  }
+
   $onChanges(changeObj) {
     if (changeObj.streams && changeObj.streams.currentValue) {
       this.measures = this.utilService.getMeasuresByStreams(this.streams, this.qlikConfig.measures);
@@ -233,6 +283,7 @@ class menuTabRightController {
 
   selectDimension(dimension) {
     this.dimension = dimension;
+    this.setCompDefaults(dimension);
     this.onDimensionChanged({ dimension });
   }
 

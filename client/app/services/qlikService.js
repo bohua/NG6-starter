@@ -107,25 +107,58 @@ export default class qlikService {
     )
   }
 
-  fieldSelection(field, state) {
-    let selections = this.app.selectionState(state).selections;
-    let sels = selections.filter(s => {return s.fieldName === field;});
-    if(sels.length != 1 || sels[0].selectedCount === 0) {
-      return;
-    }
-    return sels[0];
+  fieldSelection(field, state, callback) {
+    let selState = this.app.selectionState(state);
+    let listener = function() {
+      let selections = selState.selections;
+      let sels = selections.filter(s => {return s.fieldName === field;});
+      if(sels.length != 1 || sels[0].selectedCount === 0) {
+        callback(null);
+      } else {
+        callback(sels[0]);
+      }
+      selState.OnData.unbind( listener );
+    };
+    selState.OnData.bind( listener );
   }
 
-  fieldStateTransfer(field, src, dst) {
-    let sel = this.fieldSelection(field, src);
-    if(sel == null) {
-      return;
-    }
-    let srcField = this.app.field(sel.fieldName, src).getData();
-    srcField.OnData.bind(()=> {
+  fieldSelectionV2(field, state, callback) {
+    let srcField = this.app.field(field, state).getData();
+    let listener = ()=> {
       let selectedValues = srcField.rows.filter(r => {return r.qState==="S";}).map(r => r.qText);
-      this.app.field(sel.fieldName, dst).selectValues(selectedValues);
-    });
+      if(callback) {
+        callback(selectedValues);
+      }
+      srcField.OnData.unbind(listener);
+    };
+    srcField.OnData.bind(listener);
+  }
+
+  fieldStateTransfer(field, src, dst, toggle) {
+    let srcField = this.app.field(field, src).getData();
+    let listener = ()=> {
+      let selectedValues = srcField.rows.filter(r => {return r.qState==="S";}).map(r => r.qText);
+      this.app.field(field, dst).selectValues(selectedValues, toggle);
+      srcField.OnData.unbind(listener);
+    };
+    srcField.OnData.bind(listener);
+  }
+
+  field2StatesTransfer(field, src1, src2, dst) {
+    let srcField1 = this.app.field(field, src1).getData();
+    let srcField2 = this.app.field(field, src2).getData();
+    let listener2 = (sels)=> {
+      let selectedValues2 = srcField2.rows.filter(r => {return r.qState==="S";}).map(r => r.qText);
+      let selectedValues = sels.concat(selectedValues2).filter((x, i, a) => a.indexOf(x) == i);
+      this.app.field(field, dst).selectValues(selectedValues);
+      srcField2.OnData.unbind(listener2);
+    };
+    let listener1 = ()=> {
+      let selectedValues1 = srcField1.rows.filter(r => {return r.qState==="S";}).map(r => r.qText);
+      srcField2.OnData.bind(listener2(selectedValues1));
+      srcField1.OnData.unbind(listener1);
+    };
+    srcField1.OnData.bind(listener1);
   }
 
   destroy(qlikObj) {

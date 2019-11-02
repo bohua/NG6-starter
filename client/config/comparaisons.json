@@ -263,5 +263,23 @@
     "ref-type-variable": "vRefType",
     "cost-type-variable": "vCostType",
     "table-mode-variable": "vTableMode",
-    "stack-mode-variable": "vStackMode"
+    "stack-mode-variable": "vStackMode",
+    "defaults": {
+        "etab": {
+            "GrRef": {
+                "value": "CHU de Québec - Université Laval"
+            },
+            "GrComp": {
+                "value": "CIUSSS du Saguenay-Lac-Saint-Jean"
+            }
+        },
+        "inst": {
+            "GrRef": {
+                "value": "HÔPITAL D'ALMA"
+            },
+            "GrComp": {
+                "value": "HÔPITAL DE CHICOUTIMI"
+            }
+        }
+    }
 }
