@@ -72,8 +72,10 @@ class ProfilePageController {
     //Bind # table view to the page
     this.sharpTableObj = this.qlikService.bindVisualizationData(this.config["profile-sharp-table"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
-
       this.sharpTableData = data.map(row => (row.map(cell => cell.qText)));
+
+      let totals = ["Grand Total"];
+      this.tableSharpTotalRow = totals.concat(cube.qHyperCube.qGrandTotalRow.map(cell => cell.qText));
 
       let headers = [];
       cube.qHyperCube.qDimensionInfo.map(dimension => {
@@ -104,8 +106,10 @@ class ProfilePageController {
     //Bind % table view to the page
     this.perentageTableObj = this.qlikService.bindVisualizationData(this.config["profile-percentage-table"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
-
       this.percentageTableData = data.map(row => (row.map(cell => cell.qText)));
+      
+      let totals = ["Grand Total"];
+      this.tablePercentageTotalRow = totals.concat(cube.qHyperCube.qGrandTotalRow.map(cell => cell.qText));
 
       let headers = [];
       cube.qHyperCube.qDimensionInfo.map(dimension => {
