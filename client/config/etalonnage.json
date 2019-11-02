@@ -80,7 +80,8 @@
             "subtitle": "-",
             "icon": "far fa-money-bill-alt",
             "color": "blue",
-            "value": "Coût total"
+            "value": "Coût total",
+            "default": true
         },
         {
             "id": 2,
@@ -155,7 +156,8 @@
             "alt": [
                 "Groupes d’âge pédiatriques",
                 "Groupes d’âge gériatriques"
-            ]
+            ],
+            "default": true
         },
         {
             "id": 2,
@@ -241,7 +243,8 @@
         {
             "id": 1,
             "title": "Étab",
-            "value": "Étab"
+            "value": "Étab",
+            "default": true
         },
         {
             "id": 2,
@@ -254,7 +257,8 @@
             "id": 1,
             "title": "Moyenne",
             "value": 1,
-            "colorClass": "tab-moy"
+            "colorClass": "tab-moy",
+            "default": true
         },
         {
             "id": 2,
@@ -272,7 +276,8 @@
         {
             "id": 2,
             "title": "Coûts totaux",
-            "value": 2
+            "value": 2,
+            "default": true
         }
     ],
     "etalonnage-main-chart": "HmvEpKU",

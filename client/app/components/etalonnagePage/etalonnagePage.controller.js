@@ -225,7 +225,7 @@ class etalonnagePageController {
   }
 
   onMeasureChanged(measure) {
-    //this.measure = measure[0];
+    this.qlikService.select(this.config["measure-field"], [measure.value]);
   }
 
   onDimensionChanged(dimension) {

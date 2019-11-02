@@ -188,6 +188,9 @@ class ComparaisonsPageController {
   }
 
   onMeasureChanged(measure) {
+    this.qlikService.select(this.config["measure-field"], [measure.value]);
+    this.qlikService.select(this.config["measure-field"], [measure.value], "GrRef");
+    this.qlikService.select(this.config["measure-field"], [measure.value], "GrComp");
   }
 
   onDimensionChanged(dimension) {

@@ -272,7 +272,9 @@ class ProfilePageController {
   }
 
   onMeasureChanged(measure) {
-    //this.measure = measure[0];
+    this.qlikService.select(this.config["measure-field"], [measure.value]);
+    this.qlikService.select(this.config["measure-field"], [measure.value], "GrRef");
+    this.qlikService.select(this.config["measure-field"], [measure.value], "GrComp");
   }
 
   onDimensionChanged(dimension) {
