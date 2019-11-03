@@ -32,6 +32,22 @@
                       </div>
                     </div>
                   </div>
+                  <div>
+                    <h2>{{$ctrl.measure.title}}</h2>
+                    <div class="table-wrapper">
+                      <div id="QV06" class="scrolling-container">
+                        <straight-table headers="$ctrl.tableHeadersMeasure" data="$ctrl.tableDataMeasure" total="$ctrl.tableTotalRowMeasure"></straight-table>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h2>Distribution par {{$ctrl.stack.title}}</h2>
+                    <div class="table-wrapper">
+                      <div id="QV07" class="scrolling-container">
+                        <straight-table headers="$ctrl.tableHeadersStack" data="$ctrl.tableDataStack" total="$ctrl.tableTotalRowStack"></straight-table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="custom-content-wrapper tab-border" ng-show="$ctrl.viewMode=='chart'">

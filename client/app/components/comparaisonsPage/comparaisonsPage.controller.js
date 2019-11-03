@@ -91,7 +91,7 @@ class ComparaisonsPageController {
     }).then(object => this.qlikObj.push(object));
 
     //Table view data
-    this.qlikService.bindVisualizationData(this.config["comparaisons-table"], cube => {
+    this.qlikService.bindVisualizationData(this.config["comparaisons-table-ecarts"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
       this.tableData = data.map(row => (row.map(cell => cell.qText)));
 
@@ -128,6 +128,94 @@ class ComparaisonsPageController {
       });
 
       this.tableHeaders = headers;
+
+      this.showRightMenu = true;
+
+      this.qlikService.resize();
+    }).then(object => this.qlikObj.push(object));
+
+    //Table view data - Stack
+    this.qlikService.bindVisualizationData(this.config["comparaisons-table-stack"], cube => {
+      let data = cube.qHyperCube.qDataPages[0].qMatrix;
+      this.tableDataStack = data.map(row => (row.map(cell => cell.qText)));
+
+      let totals = ["Grand Total"];
+      this.tableTotalRowStack = totals.concat(cube.qHyperCube.qGrandTotalRow.map(cell => cell.qText));
+
+      let headers = [];
+      cube.qHyperCube.qDimensionInfo.map(dimension => {
+        headers.push({
+          title: dimension.qFallbackTitle,
+          visible: true
+        });
+      });
+
+      //Determine which fields to be visible in table view according to selected streams
+      let visibles = [];
+      visibles = visibles.concat(this.utilService.getMeasuresByStreams(this.streams, this.config.measures).map(measure => measure.title));
+
+      cube.qHyperCube.qMeasureInfo.map(measure => {
+        let title = measure.qFallbackTitle;
+        let visible;
+
+        //Special handling of Coût moyen and Coût médiane
+        if (this.refType && (title === 'Coût moyen' || title === 'Coût médiane')) {
+          visible = (this.refType.value === 1 && title === 'Coût moyen') || (this.refType.value === 2 && title === 'Coût médiane')
+        } else {
+          visible = visibles.indexOf(title) > -1;
+        }
+
+        headers.push({
+          title,
+          visible
+        });
+      });
+
+      this.tableHeadersStack = headers;
+
+      this.showRightMenu = true;
+
+      this.qlikService.resize();
+    }).then(object => this.qlikObj.push(object));
+
+    //Table view data - Measure
+    this.qlikService.bindVisualizationData(this.config["comparaisons-table-measure"], cube => {
+      let data = cube.qHyperCube.qDataPages[0].qMatrix;
+      this.tableDataMeasure = data.map(row => (row.map(cell => cell.qText)));
+
+      let totals = ["Grand Total"];
+      this.tableTotalRowMeasure = totals.concat(cube.qHyperCube.qGrandTotalRow.map(cell => cell.qText));
+
+      let headers = [];
+      cube.qHyperCube.qDimensionInfo.map(dimension => {
+        headers.push({
+          title: dimension.qFallbackTitle,
+          visible: true
+        });
+      });
+
+      //Determine which fields to be visible in table view according to selected streams
+      let visibles = [];
+      visibles = visibles.concat(this.utilService.getMeasuresByStreams(this.streams, this.config.measures).map(measure => measure.title));
+
+      cube.qHyperCube.qMeasureInfo.map(measure => {
+        let title = measure.qFallbackTitle;
+        let visible;
+
+        //Special handling of Coût moyen and Coût médiane
+        if (this.refType && (title === 'Coût moyen' || title === 'Coût médiane')) {
+          visible = (this.refType.value === 1 && title === 'Coût moyen') || (this.refType.value === 2 && title === 'Coût médiane')
+        } else {
+          visible = visibles.indexOf(title) > -1;
+        }
+
+        headers.push({
+          title,
+          visible
+        });
+      });
+
+      this.tableHeadersMeasure = headers;
 
       this.showRightMenu = true;
 
