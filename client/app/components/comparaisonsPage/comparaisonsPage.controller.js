@@ -14,7 +14,29 @@ class ComparaisonsPageController {
     this.showRightMenu = false;
     this.showCostStack = false;
 
-    this.qlikObj = [];
+    this.qlikObj = {
+      'ecart': {
+        '#': null,
+        '%': null,
+        'table': null,
+      }
+      ,'kpi': {
+        '#': null,
+        '%': null,
+        'table': null
+      }
+      ,'dist': {
+        '#': null,
+        '%': null,
+        'table': null,
+        'legend': null
+      }
+      ,'dist-cost': {
+        '#': null,
+        '%': null,
+        'legend': null
+      }
+    };
   }
 
   $onInit() {
@@ -26,6 +48,8 @@ class ComparaisonsPageController {
     let stackMode = this.stackMode = this.stateService.getState('stackMode');
     if (stackMode === '$') { stackMode = '%' }
     this.stackMode = stackMode;
+    this.kpiChartMode = '#';
+    this.ecartChartMode = '#';
 
     //calculate chart sizes
     let resizer = () => {
@@ -34,32 +58,34 @@ class ComparaisonsPageController {
       pageHeight = pageHeight < 500 ? 500 : pageHeight;
 
       //Écarts table
-      $('#QV01').css("height", pageHeight + 197);
+      $('#QV01a').css("height", pageHeight + 197);
+      $('#QV01b').css("height", pageHeight + 197);
       //KPI compare chart
-      $('#QV02').css("height", pageHeight * 0.5);
+      $('#QV02a').css("height", pageHeight * 0.5);
+      //$('#QV02b').css("height", pageHeight * 0.5);
       //Distribution stack chart
       $('#QV03a').css("height", pageHeight * 0.5);
       $('#QV03b').css("height", pageHeight * 0.5);
       $('#QV04a').css("height", pageHeight * 0.5);
       $('#QV04b').css("height", pageHeight * 0.5);
-      $('#QV05').css("height", pageHeight + 97);
+      //$('#QV05').css("height", pageHeight + 97);
     }
 
     resizer();
     $(window).resize(resizer);
 
     //Create charts
-    this.qlikService.getVisualization("QV02", this.config["comparaisons-kpi-chart"]);
-    this.qlikService.getVisualization("QV03a", this.config["comparaisons-distribution-#-chart"]);
-    this.qlikService.getVisualization("QV03b", this.config["comparaisons-distribution-#-chart-cost"]);
-    this.qlikService.getVisualization("QV04a", this.config["comparaisons-distribution-%-chart"]);
-    this.qlikService.getVisualization("QV04b", this.config["comparaisons-distribution-%-chart-cost"]);
+    this.qlikService.getVisualization("QV02a", this.config["comparaisons-kpi-#chart"]).then(obj => this.qlikObj['kpi']['#'] = obj);
+    //this.qlikService.getVisualization("QV02b", this.config["comparaisons-kpi-%chart"]).then(obj => this.qlikObj['kpi']['%'] = obj);
+    this.qlikService.getVisualization("QV03a", this.config["comparaisons-distribution-#-chart"]).then(obj => this.qlikObj['dist']['#'] = obj);
+    this.qlikService.getVisualization("QV03b", this.config["comparaisons-distribution-#-chart-cost"]).then(obj => this.qlikObj['dist-cost']['#'] = obj);
+    this.qlikService.getVisualization("QV04a", this.config["comparaisons-distribution-%-chart"]).then(obj => this.qlikObj['dist']['%'] = obj);
+    this.qlikService.getVisualization("QV04b", this.config["comparaisons-distribution-%-chart-cost"]).then(obj => this.qlikObj['dist-cost']['%'] = obj);
 
     this.qlikService.getVisualization("CurrentSelections", "CurrentSelections");
 
-    //Setup Écarts Table
-    //Ref column data
-    this.qlikService.bindVisualizationData(this.config["comparaisons-ecart-table"], cube => {
+    //Setup Écarts # table
+    this.qlikService.bindVisualizationData(this.config["comparaisons-ecart-#table"], cube => {
 
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
       let measures = cube.qHyperCube.qMeasureInfo.filter(measure => measure.qFallbackTitle);
@@ -88,10 +114,42 @@ class ComparaisonsPageController {
       this.ecartTableHeader = ecartTableHeader;
       this.ecartTableData = Object.keys(ecartTableData).map(key => [key, ...ecartTableData[key]]);
 
-    }).then(object => this.qlikObj.push(object));
+    }).then(object => this.qlikObj['ecart']['#'] = object);
+    
+    //Setup Écarts % table
+    this.qlikService.bindVisualizationData(this.config["comparaisons-ecart-%table"], cube => {
+
+      let data = cube.qHyperCube.qDataPages[0].qMatrix;
+      let measures = cube.qHyperCube.qMeasureInfo.filter(measure => measure.qFallbackTitle);
+
+      let ecartTableHeaderPercent = [];
+      let ecartTableDataPercent = {};
+
+      data.forEach(row => {
+        row.forEach((cell, index) => {
+          if (index > 0) {
+            let key = measures[index - 1].qFallbackTitle;
+
+            if (key) {
+              if (!ecartTableData[key]) {
+                ecartTableDataPercent[key] = [];
+              }
+              ecartTableDataPercent[key].push(cell.qText);
+            }
+          } else {
+            //Otherwise it's group name
+            ecartTableHeaderPercent.push(cell.qText);
+          }
+        });
+      });
+
+      this.ecartTableHeaderPercent = ecartTableHeaderPercent;
+      this.ecartTableDataPercent = Object.keys(ecartTableDataPercent).map(key => [key, ...ecartTableDataPercent[key]]);
+
+    }).then(object => this.qlikObj['ecart']['%'] = object);
 
     //Table view data
-    this.qlikService.bindVisualizationData(this.config["comparaisons-table-ecarts"], cube => {
+    this.qlikService.bindVisualizationData(this.config["comparaisons-table-ecart"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
       this.tableData = data.map(row => (row.map(cell => cell.qText)));
 
@@ -128,14 +186,12 @@ class ComparaisonsPageController {
       });
 
       this.tableHeaders = headers;
-
       this.showRightMenu = true;
-
       this.qlikService.resize();
-    }).then(object => this.qlikObj.push(object));
+    }).then(object => this.qlikObj['ecart']['table'] = object);
 
-    //Table view data - Stack
-    this.qlikService.bindVisualizationData(this.config["comparaisons-table-stack"], cube => {
+    //Table view data - Dist
+    this.qlikService.bindVisualizationData(this.config["comparaisons-table-dist"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
       this.tableDataStack = data.map(row => (row.map(cell => cell.qText)));
 
@@ -172,14 +228,12 @@ class ComparaisonsPageController {
       });
 
       this.tableHeadersStack = headers;
-
       this.showRightMenu = true;
-
       this.qlikService.resize();
-    }).then(object => this.qlikObj.push(object));
+    }).then(object => this.qlikObj['dist']['table'] = object);
 
-    //Table view data - Measure
-    this.qlikService.bindVisualizationData(this.config["comparaisons-table-measure"], cube => {
+    //Table view data - KPI
+    this.qlikService.bindVisualizationData(this.config["comparaisons-table-kpi"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
       this.tableDataMeasure = data.map(row => (row.map(cell => cell.qText)));
 
@@ -216,11 +270,9 @@ class ComparaisonsPageController {
       });
 
       this.tableHeadersMeasure = headers;
-
       this.showRightMenu = true;
-
       this.qlikService.resize();
-    }).then(object => this.qlikObj.push(object));
+    }).then(object => this.qlikObj['kpi']['table']);
 
     //Bind legend values to stack bar chart
     this.qlikService.bindVisualizationData(this.config["etalonnage-sub-chart-legend"], cube => {
@@ -231,7 +283,7 @@ class ComparaisonsPageController {
         color: row[1].qText
       }));
       this.legendField = cube.qHyperCube.qDimensionInfo[0].qFallbackTitle;
-    }).then(object => this.qlikObj.push(object));
+    }).then(object => this.qlikObj['dist']['legend'] = object);
 
     //Bind legend values to stack bar chart for Type de coût
     this.qlikService.bindVisualizationData(this.config["etalonnage-cost-chart-legend"], cube => {
@@ -242,9 +294,24 @@ class ComparaisonsPageController {
         color: row[1].qText
       }));
       this.legendField2 = cube.qHyperCube.qDimensionInfo[0].qFallbackTitle;
-    }).then(object => this.qlikObj.push(object));
+    }).then(object => this.qlikObj['dist-cost']['legend'] = object);
+
+
   }
 
+  exportData(chartName, mode) {
+    console.log('export ' + chartName + ', ' + mode);
+    if(chartName in this.qlikObj && mode in this.qlikObj[chartName]) {
+      this.qlikService.exportData(this.qlikObj[chartName][mode]);
+    } else {
+      console.error('can not find qlik obj');
+    }
+  }
+
+  setEcartChartMode(mode) {
+    this.ecartChartMode = mode;
+    this.qlikService.resize();
+  }
 
   setChartView() {
     this.viewMode = this.stateService.setState('viewMode', 'chart');

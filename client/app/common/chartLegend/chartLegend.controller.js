@@ -12,7 +12,7 @@ class ChartLegendController {
 
       this.fieldListener = () => {
 
-        this.legends = this.field.rows.map(legend => ({
+        this.legends = this.field.rows.filter(l => l.qState !== 'X').map(legend => ({
           value: legend.qText,
           active: false
         }));
@@ -33,7 +33,7 @@ class ChartLegendController {
   getColor(legend) {
     let hits = this.legendList.filter(l => l.value === legend.value);
 
-    if (hits.length > 0) {
+    if (hits.length > 0 && hits[0].color !== '-') {
       return hits[0].color;
     } else {
       return '#dddddd';

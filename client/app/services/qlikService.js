@@ -10,6 +10,10 @@ export default class qlikService {
     return this.app.getObject(element, objectId);
   }
 
+  getVisualObj(objectId) {
+    return this.app.visualization.get(objectId);
+  }
+
   field(field, callback) {
     let f = this.app.field(...field).getData();
     f.OnData.bind(callback);
