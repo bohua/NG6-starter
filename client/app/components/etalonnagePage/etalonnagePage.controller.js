@@ -168,8 +168,8 @@ class etalonnagePageController {
 
     let dim = this.stateService.getState('dimension').title.toUpperCase();
     let fnToTranser = (dim === 'inst'.toUpperCase()) ? 
-                      this.config["transfer-field-inst"] : this.config["transfer-field-etab"]; 
-    //this.qlikService.fieldStateTransfer(fnToTranser, "GrRef", "$");
+                      this.config["transfer-field-inst"] : this.config["transfer-field-etab"];
+    this.qlikService.field2StatesTransfer(fnToTranser, "GrRef", "GrComp", "$");
   }
 
   exportTable() {
@@ -225,7 +225,7 @@ class etalonnagePageController {
   }
 
   onMeasureChanged(measure) {
-    //this.measure = measure[0];
+    this.qlikService.select(this.config["measure-field"], [measure.value]);
   }
 
   onDimensionChanged(dimension) {
@@ -250,7 +250,7 @@ class etalonnagePageController {
   }
 
   $onDestroy() {
-    console.log('etalonnagePage component Destroyed');
+    //console.log('etalonnagePage component Destroyed');
 
     this.qlikService.destroy(this.qlikObj);
   }

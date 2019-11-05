@@ -12,85 +12,154 @@
             <div class="row">
               <div class="col col-left">
                 <div class="custom-content-wrapper tab-border" ng-show="$ctrl.viewMode=='table'">
-                  <ul class="nav nav-tabs icoTab">
-                    <li class="nav-item" ng-click="$ctrl.setChartView()">
-                      <a class="col-comp-chart"><i class="far fa-chart-bar"></i></a>
-                    </li>
-                    <!-- <li class="nav-item">
-                      <a class="active"><i class="fas fa-hashtag"></i></a>
-                    </li>
-                    <li class="nav-item">
-                      <a><i class="fas fa-dollar-sign"></i></a>
-                    </li> -->
-                  </ul>
-
-                  <div>
-                    <h2>ÉCARTS</h2>
-                    <div class="table-wrapper">
-                      <div id="QV05" class="scrolling-container">
-                        <straight-table headers="$ctrl.tableHeaders" data="$ctrl.tableData" total="$ctrl.tableTotalRow"></straight-table>
+                    <ul class="nav nav-tabs icoTab">
+                      <li class="nav-item" ng-click="$ctrl.setChartView()">
+                        <a class="nav-link"><i class="far fa-chart-bar"></i></a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" ng-click="$ctrl.exportData('escart', 'table')">Export</a>
+                        </li>
+                    </ul>
+                    <div>
+                      <h2>ÉCARTS</h2>
+                      <div class="table-wrapper">
+                        <div id="QV05" class="scrolling-container">
+                          <straight-table headers="$ctrl.tableHeaders" data="$ctrl.tableData" total="$ctrl.tableTotalRow"></straight-table>
+                        </div>
                       </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-left">
+                <div class="custom-content-wrapper tab-border" ng-show="$ctrl.viewMode=='table'">
+                  <h2>{{$ctrl.measure.title}}</h2>
+                  <ul class=" nav nav-tabs icoTab">
+                    <li class="nav-item" ><a class="nav-link" ng-click="$ctrl.exportData('kpi', 'table')">Export</a></li>
+                  </ul>
+                  <div class="table-wrapper">
+                    <div id="QV06" class="scrolling-container">
+                      <straight-table headers="$ctrl.tableHeadersMeasure" data="$ctrl.tableDataMeasure" total="$ctrl.tableTotalRowMeasure"></straight-table>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-left">
+                <div class="custom-content-wrapper tab-border" ng-show="$ctrl.viewMode=='table'">
+                  <ul class=" nav nav-tabs icoTab">
+                    <li class="nav-item" ><a class="nav-link" ng-click="$ctrl.exportData('dist', 'table')">Export</a> </li>
+                  </ul>
+                  <h2>Distribution par {{$ctrl.stack.title}}</h2>
+                  <div class="table-wrapper">
+                    <div id="QV07" class="scrolling-container">
+                      <straight-table headers="$ctrl.tableHeadersStack" data="$ctrl.tableDataStack" total="$ctrl.tableTotalRowStack"></straight-table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <div class="row">
+              <div class="col col-left">
                 <div class="custom-content-wrapper tab-border" ng-show="$ctrl.viewMode=='chart'">
                   <ul class=" nav nav-tabs icoTab">
                     <li class="nav-item">
                       <a class="col-comp-table" ng-click="$ctrl.setTableView()"><i class="far fa-table"></i></a>
                     </li>
-                    <!-- <li class="nav-item">
-                      <a class="active"><i class="fas fa-hashtag"></i></a>
+                    <li class="nav-item">
+                      <a class="sub-nav-link" ng-class="{active: $ctrl.ecartChartMode=='#'}">
+                        <i class="fas fa-hashtag" ng-click="$ctrl.setEcartChartMode('#')"></i>
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <a><i class="fas fa-dollar-sign"></i></a>
-                    </li> -->
+                      <a class="sub-nav-link" ng-class="{active: $ctrl.ecartChartMode=='%'}">
+                        <i class="fal fa-percentage" ng-click="$ctrl.setEcartChartMode('%')"></i>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" ng-click="$ctrl.exportData('ecart', $ctrl.ecartChartMode)">Export</a>
+                    </li>
                   </ul>
-
-                  <div id="QV01" class="table-blue">
+                  <div id="QV01a" class="table-blue" ng-show="$ctrl.ecartChartMode=='#'">
                     <h2>ÉCARTS</h2>
                     <div class="com-table-wrapper">
-                      <compare-table data="$ctrl.ecartTableData" ref-color="$ctrl.measure.color"
-                        ref-type="$ctrl.refType">
-                      </compare-table>
+                      <compare-table data="$ctrl.ecartTableData" ref-color="$ctrl.measure.color" ref-type="$ctrl.refType"></compare-table>
+                    </div>
+                  </div>
+                  <div id="QV01b" class="table-blue" ng-show="$ctrl.ecartChartMode=='%'">
+                    <h2>ÉCARTS</h2>
+                    <div class="com-table-wrapper">
+                      <compare-table data="$ctrl.ecartTableDataPercent" ref-color="$ctrl.measure.color" ref-type="$ctrl.refType"></compare-table>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="col col-right">
-                <div class="custom-content-wrapper tab-border">
-                  <h2>{{$ctrl.measure.title}}</h2>
-                  <div class="chart-wrapper">
-                    <div id="QV02"></div>
+                <div class="row">
+                  <div class="col col-left">
+                      <div class="custom-content-wrapper tab-border">
+                          <h2>{{$ctrl.measure.title}}</h2>
+                          <ul class=" nav nav-tabs icoTab">
+                            <li class="nav-item">
+                              <a class="nav-link" ng-click="$ctrl.exportData('kpi', $ctrl.kpiChartMode)">Export</a>
+                            </li>
+                          </ul>
+                          <div class="chart-wrapper" ng-show="$ctrl.kpiChartMode=='#'">
+                            <div id="QV02a"></div>
+                          </div>
+                          <div class="chart-wrapper" ng-show="$ctrl.kpiChartMode=='%'">
+                            <div id="QV02b"></div>
+                          </div>
+                        </div>
                   </div>
                 </div>
-
-                <div class="custom-content-wrapper tab-border bottom-tab-wrapper" ng-show="$ctrl.viewMode=='chart'">
-                  <div class=" tab-bottom chart-wrap">
-                    <h2>Distribution par {{$ctrl.stack.title}}</h2>
-                    <ul class="nav nav-tabs">
-                      <li ng-click="$ctrl.setStackMode('#')"><a ng-class="{active: $ctrl.stackMode=='#'}"><i
-                            class="fas fa-hashtag"></i></a></li>
-                      <li ng-click="$ctrl.setStackMode('%')"><a ng-class="{active: $ctrl.stackMode=='%'}"><i
-                            class="fal fa-percentage"></i></a></li>
-                    </ul>
-                    <div class="chart-wrapper" ng-show="$ctrl.stackMode=='#'">
-                      <div id="QV03a" ng-show="$ctrl.stack.value!='Type de coûts'"></div>
-                      <div id="QV03b" ng-show="$ctrl.stack.value=='Type de coûts'"></div>
-                    </div>
-                    <div class="chart-wrapper" ng-show="$ctrl.stackMode=='%'">
-                      <div id="QV04a" ng-show="$ctrl.stack.value!='Type de coûts'"></div>
-                      <div id="QV04b" ng-show="$ctrl.stack.value=='Type de coûts'"></div>
-                    </div>
-                    <chart-legend ng-show="$ctrl.stack.value!='Type de coûts'" legend-list="$ctrl.legendList"
-                      qlik-field="$ctrl.legendField">
-                    </chart-legend>
-                    <chart-legend ng-show="$ctrl.stack.value=='Type de coûts'" legend-list="$ctrl.legendList2"
-                      qlik-field="$ctrl.legendField2">
-                    </chart-legend>
+                
+                <div class="row">
+                  <div class="col col-left">
+                      <div class="custom-content-wrapper tab-border bottom-tab-wrapper" ng-show="$ctrl.viewMode=='chart'">
+                        <div class="chart-wrap">
+                          <h2>Distribution par {{$ctrl.stack.title}}</h2>
+                          <ul class=" nav nav-tabs icoTab">
+                            <li class="nav-item">
+                              <a class="nav-link" ng-class="{active: $ctrl.stackMode=='#'}">
+                                <i class="fas fa-hashtag" ng-click="$ctrl.setStackMode('#')"></i>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" ng-class="{active: $ctrl.stackMode=='%'}">
+                                <i class="fal fa-percentage" ng-click="$ctrl.setStackMode('%')"></i>
+                              </a>
+                            </li>
+                            <li class="nav-item" ng-show="$ctrl.stack.value!='Type de coûts'">
+                              <a class="nav-link" ng-click="$ctrl.exportData('dist', $ctrl.stackMode)">Export</a>
+                            </li>
+                            <li class="nav-item" ng-show="$ctrl.stack.value=='Type de coûts'">
+                              <a class="nav-link" ng-click="$ctrl.exportData('dist-cost', $ctrl.stackMode)">Export</a>
+                            </li>
+                          </ul>
+                          <div class="chart-wrapper" ng-show="$ctrl.stackMode=='#'">
+                            <div id="QV03a" ng-show="$ctrl.stack.value!='Type de coûts'"></div>
+                            <div id="QV03b" ng-show="$ctrl.stack.value=='Type de coûts'"></div>
+                          </div>
+                          <div class="chart-wrapper" ng-show="$ctrl.stackMode=='%'">
+                            <div id="QV04a" ng-show="$ctrl.stack.value!='Type de coûts'"></div>
+                            <div id="QV04b" ng-show="$ctrl.stack.value=='Type de coûts'"></div>
+                          </div>
+                          <chart-legend ng-show="$ctrl.stack.value!='Type de coûts'" legend-list="$ctrl.legendList"
+                            qlik-field="$ctrl.legendField">
+                          </chart-legend>
+                          <chart-legend ng-show="$ctrl.stack.value=='Type de coûts'" legend-list="$ctrl.legendList2"
+                            qlik-field="$ctrl.legendField2">
+                          </chart-legend>
+                        </div>
+                      </div>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>

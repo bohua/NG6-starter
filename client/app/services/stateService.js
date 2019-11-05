@@ -20,6 +20,9 @@ export default class stateService {
   setState(prop, value, scope) {
     let s = scope ? scope : 'global';
 
+    // if(prop === 'stack') {
+    //   console.log("set stack.");
+    // }
     if (this.state[s]) {
       this.state[s][prop] = value;
     }
@@ -35,5 +38,14 @@ export default class stateService {
     }
 
     return null;
+  }
+
+  exists(prop, scope) {
+    let s = scope ? scope : 'global';
+    if(this.state[s] && prop in this.state[s]) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

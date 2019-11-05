@@ -19,6 +19,10 @@ let etalonnagePageModule = angular.module('etlonnage', [
             'ngInject';
 
             return loadService.loadConfig('etalonnage');
+          },
+          bookmark: (loadService) => {
+            'ngInject';
+            return loadService.applyBookmark();
           }
         }
       });

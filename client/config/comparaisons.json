@@ -81,7 +81,8 @@
             "title": "Coût total - Direct",
             "icon": "far fa-money-bill-alt",
             "color": "blue",
-            "value": "Coût total"
+            "value": "Coût total",
+            "default": true
         },
         {
             "id": 2,
@@ -155,7 +156,8 @@
             "alt": [
                 "Groupes d’âge pédiatriques",
                 "Groupes d’âge gériatriques"
-            ]
+            ],
+            "default": true
         },
         {
             "id": 2,
@@ -202,7 +204,8 @@
         {
             "id": 1,
             "title": "Étab",
-            "value": "Étab"
+            "value": "Étab",
+            "default": true
         },
         {
             "id": 2,
@@ -215,7 +218,8 @@
             "id": 1,
             "title": "Moyenne",
             "value": 1,
-            "colorClass": "tab-moy"
+            "colorClass": "tab-moy",
+            "default": true
         },
         {
             "id": 2,
@@ -233,18 +237,23 @@
         {
             "id": 2,
             "title": "Coûts totaux",
-            "value": 2
+            "value": 2,
+            "default": true
         }
     ],
-    "comparaisons-ecart-table": "KeUMu",
-    "comparaisons-kpi-chart": "DVUuTz",
+    "comparaisons-ecart-#table": "KeUMu",
+    "comparaisons-ecart-%table": "KeUMu",
+    "comparaisons-kpi-#chart": "DVUuTz",
+    "comparaisons-kpi-%chart": "DVUuTz",
     "comparaisons-distribution-#-chart": "ZMQKX",
     "comparaisons-distribution-#-chart-cost": "gJpLRwQ",
     "comparaisons-distribution-%-chart": "PyqHE",
     "comparaisons-distribution-%-chart-cost": "MaqbbC",
     "etalonnage-sub-chart-legend": "QyFaQM",
     "etalonnage-cost-chart-legend": "KVyeLzv",
-    "comparaisons-table": "VsCxpe",
+    "comparaisons-table-ecart": "VsCxpe",
+    "comparaisons-table-kpi": "VsCxpe",
+    "comparaisons-table-dist": "VsCxpe",
     "group-ref-list-estab": "FGMrKh",
     "group-ref-list-inst": "ZXRTfm",
     "group-comp-list-estab": "MpNYzya",
@@ -258,5 +267,23 @@
     "ref-type-variable": "vRefType",
     "cost-type-variable": "vCostType",
     "table-mode-variable": "vTableMode",
-    "stack-mode-variable": "vStackMode"
+    "stack-mode-variable": "vStackMode",
+    "defaults": {
+        "etab": {
+            "GrRef": {
+                "value": "CHU de Québec - Université Laval"
+            },
+            "GrComp": {
+                "value": "CIUSSS du Saguenay-Lac-Saint-Jean"
+            }
+        },
+        "inst": {
+            "GrRef": {
+                "value": "HÔPITAL D'ALMA"
+            },
+            "GrComp": {
+                "value": "HÔPITAL DE CHICOUTIMI"
+            }
+        }
+    }
 }

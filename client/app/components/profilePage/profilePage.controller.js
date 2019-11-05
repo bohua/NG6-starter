@@ -72,8 +72,10 @@ class ProfilePageController {
     //Bind # table view to the page
     this.sharpTableObj = this.qlikService.bindVisualizationData(this.config["profile-sharp-table"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
-
       this.sharpTableData = data.map(row => (row.map(cell => cell.qText)));
+
+      let totals = ["Grand Total"];
+      this.tableSharpTotalRow = totals.concat(cube.qHyperCube.qGrandTotalRow.map(cell => cell.qText));
 
       let headers = [];
       cube.qHyperCube.qDimensionInfo.map(dimension => {
@@ -104,8 +106,10 @@ class ProfilePageController {
     //Bind % table view to the page
     this.perentageTableObj = this.qlikService.bindVisualizationData(this.config["profile-percentage-table"], cube => {
       let data = cube.qHyperCube.qDataPages[0].qMatrix;
-
       this.percentageTableData = data.map(row => (row.map(cell => cell.qText)));
+      
+      let totals = ["Grand Total"];
+      this.tablePercentageTotalRow = totals.concat(cube.qHyperCube.qGrandTotalRow.map(cell => cell.qText));
 
       let headers = [];
       cube.qHyperCube.qDimensionInfo.map(dimension => {
@@ -198,25 +202,6 @@ class ProfilePageController {
       this.perCompTableHeader = compTableHeader;
 
     }).then(object => this.qlikObj.push(object));
-
-    //transfer state;
-    let dim = this.stateService.getState('dimension')
-    let dimTitle = dim ? dim.title.toUpperCase() : null;
-    let fnToTranser = (dimTitle && dimTitle === 'inst'.toUpperCase()) ? 
-                      this.config["transfer-field-inst"] : this.config["transfer-field-etab"]; 
-    this.qlikService.fieldStateTransfer(fnToTranser, "$", "GrRef");
-
-    //check if we need to apply default selection on Ref Group.
-    let refSelection = this.qlikService.fieldSelection(fnToTranser, "GrRef");
-    if(refSelection == null) {
-      let defaultGrRefSelVariable = this.config["default-sel-variable"];
-      if(defaultGrRefSelVariable === undefined) {
-        let defaultGrRefSelValue = this.config["default-sel-value"];
-        this.qlikService.select(fnToTranser, [defaultGrRefSelValue], "GrRef");
-      } else {
-        this.qlikService.getVariable(defaultGrRefSelVariable, (v) => { this.qlikService.select(fnToTranser, [v], "GrRef"); });
-      }
-    }
   }
 
   exportTable() {
@@ -272,7 +257,9 @@ class ProfilePageController {
   }
 
   onMeasureChanged(measure) {
-    //this.measure = measure[0];
+    this.qlikService.select(this.config["measure-field"], [measure.value]);
+    this.qlikService.select(this.config["measure-field"], [measure.value], "GrRef");
+    this.qlikService.select(this.config["measure-field"], [measure.value], "GrComp");
   }
 
   onDimensionChanged(dimension) {
@@ -299,7 +286,7 @@ class ProfilePageController {
   }
 
   $onDestroy() {
-    console.log('etalonnagePage component Destroyed');
+    //console.log('etalonnagePage component Destroyed');
 
     this.qlikService.destroy(this.qlikObj);
   }
