@@ -13,7 +13,7 @@ constructor(loadService, qlikService, stateService) {
   this.loadService = loadService;
 
   this.$onDestroy = () => {
-    console.log('footBar component Destroyed');
+    //console.log('footBar component Destroyed');
   }
 }
 

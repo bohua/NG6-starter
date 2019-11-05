@@ -14,9 +14,15 @@ export default class loadService {
     promises.push($http.get("config/profile.json").then(reply => _this.config.profile = reply.data));
     promises.push($http.get("config/system.json").then(reply => _this.config.system = reply.data));
     
-    this.initialized = Promise.all(promises).then(() => {
-      let bmId = _this.config.system["onopen-bookmark"];
-      qlikService.applyBookmark(bmId);
+    this.initialized = Promise.all(promises);
+
+    this.bmApplied = new Promise((resolve, reject) => {
+      this.initialized.then(() => {
+        let bmId = _this.config.system["onopen-bookmark"];
+        qlikService.applyBookmark(bmId).then(() => {
+            resolve();
+        });
+      });
     });
   }
 
@@ -25,5 +31,9 @@ export default class loadService {
     return this.initialized.then(() => {
       return _this.config[name];
     });
+  }
+
+  applyBookmark() {
+    return this.bmApplied;
   }
 }

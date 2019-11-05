@@ -76,7 +76,8 @@
             "title": "Coût total - Direct",
             "icon": "far fa-money-bill-alt",
             "color": "blue",
-            "value": "Coût total"
+            "value": "Coût total",
+            "default": true
         },
         {
             "id": 2,
@@ -105,7 +106,8 @@
             "id": 1,
             "title": "Par regroupement de nature",
             "value": "Par regroupement de nature",
-            "long": true
+            "long": true,
+            "default": true
         },
         {
             "id": 2,
@@ -160,7 +162,8 @@
         {
             "id": 1,
             "title": "Étab",
-            "value": "Étab"
+            "value": "Étab",
+            "default": true
         },
         {
             "id": 2,
@@ -173,7 +176,8 @@
             "id": 1,
             "title": "Moyenne",
             "value": 1,
-            "colorClass": "tab-moy"
+            "colorClass": "tab-moy",
+            "default": true
         },
         {
             "id": 2,
@@ -191,7 +195,8 @@
         {
             "id": 2,
             "title": "Coûts totaux",
-            "value": 2
+            "value": 2,
+            "default": true
         }
     ],
     "profile-main-chart": "BPLmKjq",
@@ -200,10 +205,10 @@
     "profile-percentage-table": "jStAhv",
     "profile-num-comp-table": "RXnFVdk",
     "profile-per-comp-table": "uKWEK",
-    "group-ref-list-estab": "FGMrKh",
-    "group-ref-list-inst": "ZXRTfm",
-    "group-comp-list-estab": "MpNYzya",
-    "group-comp-list-inst": "vZLVWD",
+    "group-ref-list-estab": "EBzFcm",
+    "group-ref-list-inst": "UwWwa",
+    "group-comp-list-estab": "bmXZ",
+    "group-comp-list-inst": "VcBAn",
     "stream-field": "%Stream",
     "measure-field": "%ProfildecoutsMeasureDesc",
     "dimension-field": "%EtalonnageDimensionDesc",
@@ -214,5 +219,22 @@
     "cost-type-variable": "vCostType",
     "table-mode-variable": "vTableMode",
     "stack-mode-variable": "vStackMode",
-    "default-sel-value": "CHU de Québec - Université Laval"
+    "defaults": {
+        "etab": {
+            "GrRef": {
+                "value": "CHU de Québec - Université Laval"
+            },
+            "GrComp": {
+                "value": "CIUSSS du Saguenay-Lac-Saint-Jean"
+            }
+        },
+        "inst": {
+            "GrRef": {
+                "value": "HÔPITAL D'ALMA"
+            },
+            "GrComp": {
+                "value": "HÔPITAL DE CHICOUTIMI"
+            }
+        }
+    }
 }

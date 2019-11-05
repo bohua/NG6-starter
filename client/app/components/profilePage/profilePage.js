@@ -18,8 +18,11 @@ let profilePageModule = angular.module('profilePage', [
       resolve: {
         config: (loadService) => {
           'ngInject';
-
           return loadService.loadConfig('profile');
+        },
+        bookmark: (loadService) => {
+          'ngInject';
+          return loadService.applyBookmark();
         }
       }
     });
