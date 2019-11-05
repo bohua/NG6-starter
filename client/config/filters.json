@@ -27,30 +27,35 @@
             {
                 "title": "Généraux",
                 "obj": {
-                    "Année financière": "XvsPJRs",
-                    "Types d'épisodes": "tRgeqU",
                     "Catégories d'épisodes": "UCrAjU",
-                    "Statut d'épisode": "pJfUadX"
+                    "Établissement": "JLTGm",
+                    "Exercices financiers": "XvsPJRs",
+                    "Installation": "pWsxu",
+                    "Statut d'épisode": "pJfUadX",
+                    "Types d'épisodes": "tRgeqU"
                 }
             },
             {
-                "title": "Relatif aux épisodes/patients",
+                "title": "Relatif aux épisodes/usagers",
                 "obj": {
-                    "Genre": "mgKzc", 
-                    "Groupes d'âge": "mNyMJUw",
-                    "CMD":"pBRJY", 
-                    "Destination à la sortie":"abKZDeQ", 
-                    "Type de soins":"YXhNg", 
-                    "Provenance":"SDQdw", 
-                    "Cas typiques/atypiques":"NnMTta", 
-                    "DRG":"bPuWnu", 
-                    "Gravité clinique":"BtEkEd",
-                    "Interverntion principal": "jkpRe",
-                    "Diagnostic principal": "JRAxZ",
                     "Catégorie d'admission": "GUDVJxk",
+                    "Cas typiques/atypiques": "NnMTta",
+                    "CMD": "pBRJY",
+                    "Destination à la sortie": "abKZDeQ",
+                    "Diagnostic Principal": "JRAxZ",
+                    "DRG": "bPuWnu",
+                    "Genre": "mgKzc",
+                    "Gravité clinique": "BtEkEd",
+                    "Groupes d'âge": "LYDCwmU",
+                    "Interverntion principale": "jkpRe",
                     "Mode d'arrivée": "qUVue",
-                    "Patient sur civiere":"FBUXj",
-                    "Priorité triage": "xAsUUSw"
+                    "Patient sur civiere": "FBUXj",
+                    "Priorité triage": "xAsUUSw",
+                    "Provenance": "SDQdw",
+                    "Type de soins": "YXhNg",
+                    "CostBucketMeasrue": "qBCymR",
+                    "CostBucketFamily": "LuNRAT",
+                    "Stream": "BAhMWg"
                 }
             },
             {

@@ -161,7 +161,7 @@
         },
         {
             "id": 2,
-            "title": "Typ/Atyp",
+            "title": "Atypiques / Typiques",
             "value": "Typ/Atyp"
         },
         {
@@ -251,9 +251,9 @@
     "comparaisons-distribution-%-chart-cost": "MaqbbC",
     "etalonnage-sub-chart-legend": "QyFaQM",
     "etalonnage-cost-chart-legend": "KVyeLzv",
-    "comparaisons-table-ecart": "VsCxpe",
-    "comparaisons-table-kpi": "VsCxpe",
-    "comparaisons-table-dist": "VsCxpe",
+    "comparaisons-table-ecart": "DvecF",
+    "comparaisons-table-kpi": "DvecF",
+    "comparaisons-table-dist": "DvecF",
     "group-ref-list-estab": "FGMrKh",
     "group-ref-list-inst": "ZXRTfm",
     "group-comp-list-estab": "MpNYzya",
