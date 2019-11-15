@@ -290,11 +290,12 @@ class menuTabRightController {
   selectRefType(selected) {
     this.refType = selected;
     this.onRefTypeChanged({ refType: this.refType });
-    let from = (this.refType.value === 1 ? 'Coût médiane' : 'Coût moyen');
-    let to = (this.refType.value === 1 ? 'Coût moyen' : 'Coût médiane');
+    let to2 = 'Coût ';
+    to2 += (this.refType.value === 1 ? 'moyen' : 'médiane');
+    to2 += (this.costType.value === 1 ? ' - Direct' : '');
     this.qlikConfig.measures.forEach(m => {
-      if(m.title===from) {
-        m.title = to;
+      if(m.value==="Coût moyen") {
+        m.title = to2;
       }
     });
   }
@@ -302,11 +303,15 @@ class menuTabRightController {
   selectCostType(selected) {
     this.costType = selected;
     this.onCostTypeChanged({ costType: this.costType });
-    let from = (this.costType.value === 1 ? 'Coût total' : 'Coût total - Direct');
-    let to = (this.costType.value === 1 ? 'Coût total - Direct' : 'Coût total');
+    let to1 = (this.costType.value === 1 ? 'Coût total - Direct' : 'Coût total');
+    let to2 = 'Coût ';
+    to2 += (this.refType.value === 1 ? 'moyen' : 'médiane');
+    to2 += (this.costType.value === 1 ? ' - Direct' : '');
     this.qlikConfig.measures.forEach(m => {
-      if(m.title===from) {
-        m.title = to;
+      if(m.value==="Coût total") {
+        m.title = to1;
+      } else if(m.value==="Coût moyen") {
+        m.title = to2;
       }
     });
   }
