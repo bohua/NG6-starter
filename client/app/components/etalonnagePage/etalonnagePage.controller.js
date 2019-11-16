@@ -166,10 +166,13 @@ class etalonnagePageController {
       this.legendField2 = cube.qHyperCube.qDimensionInfo[0].qFallbackTitle;
     }).then(object => this.qlikObj.push(object));
 
-    let dim = this.stateService.getState('dimension').title.toUpperCase();
-    let fnToTranser = (dim === 'inst'.toUpperCase()) ? 
-                      this.config["transfer-field-inst"] : this.config["transfer-field-etab"];
-    this.qlikService.field2StatesTransfer(fnToTranser, "GrRef", "GrComp", "$");
+    let dimState = this.stateService.getState('dimension');
+    if(dimState) {
+      let dim = dimState.title.toUpperCase();
+      let fnToTranser = (dim === 'inst'.toUpperCase()) ? 
+                        this.config["transfer-field-inst"] : this.config["transfer-field-etab"];
+      this.qlikService.field2StatesTransfer(fnToTranser, "GrRef", "GrComp", "$");
+    }
   }
 
   exportTable() {

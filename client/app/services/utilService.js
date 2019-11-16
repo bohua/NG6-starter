@@ -21,12 +21,13 @@ export default class utilService {
 
     if (streams && stackList) {
       streams.forEach(stream => {
-        let hits = stackList.filter(stack => stream.stacks.indexOf(stack.id) > -1);
-
-        hits.forEach(hit => {
-          if (stacks.indexOf(hit) < 0) {
-            stacks.push(hit);
-          }
+        stream.stacks.forEach( si => {
+          let hits = stackList.filter(stack => stack.id === si);
+          hits.forEach(hit => {
+            if (stacks.indexOf(hit) < 0) {
+              stacks.push(hit);
+            }
+          });
         });
       });
     }
