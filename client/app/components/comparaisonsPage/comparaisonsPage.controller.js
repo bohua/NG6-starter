@@ -376,8 +376,13 @@ class ComparaisonsPageController {
 
   $onDestroy() {
     //console.log('comparaisonsPage component Destroyed');
-
-    this.qlikService.destroy(this.qlikObj);
+    let objArray = [];
+    for(const [k1, v1] of Object.entries(this.qlikObj)) {
+      for(const [k2, v2] of Object.entries(v1)) {
+        if(v2) objArray.push(v2);
+      }
+    }
+    this.qlikService.destroy(objArray);
   }
 }
 

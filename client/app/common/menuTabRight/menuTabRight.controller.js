@@ -291,8 +291,8 @@ class menuTabRightController {
     this.refType = selected;
     this.onRefTypeChanged({ refType: this.refType });
     let to2 = 'Coût ';
-    to2 += (this.refType.value === 1 ? 'moyen' : 'médiane');
-    to2 += (this.costType.value === 1 ? ' - Direct' : '');
+    to2 += (this.refType && this.refType.value === 1 ? 'moyen' : 'médiane');
+    to2 += (this.costType && this.costType.value === 1 ? ' - Direct' : '');
     this.qlikConfig.measures.forEach(m => {
       if(m.value==="Coût moyen") {
         m.title = to2;
