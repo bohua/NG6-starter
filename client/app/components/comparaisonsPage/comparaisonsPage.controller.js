@@ -51,6 +51,10 @@ class ComparaisonsPageController {
     this.kpiChartMode = '#';
     this.ecartChartMode = '#';
 
+    this.topTableTitle = '';
+    this.midTableTitle = '';
+    this.botTableTitle = 'Écarts';
+
     //calculate chart sizes
     let resizer = () => {
       let windowHeight = $(window).height(), offset = 493;
@@ -347,6 +351,8 @@ class ComparaisonsPageController {
     this.qlikService.select(this.config["dimension-field"], [dimension.value]);
     this.qlikService.select(this.config["dimension-field"], [dimension.value], "GrRef");
     this.qlikService.select(this.config["dimension-field"], [dimension.value], "GrComp");
+    this.topTableTitle = dimension.id === 1 ? 'Establishments in Reference Group' : 'Installations in Reference Group';
+    this.midTableTitle = dimension.id === 1 ? 'Establishments in Comparative Group' : 'Installations in Comparative Group';
   }
 
   onStackChanged(stack) {

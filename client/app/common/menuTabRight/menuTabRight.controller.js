@@ -123,7 +123,10 @@ class menuTabRightController {
           }
         });
       });
-      this.setDefaultStateIfEmpty('dimension', this.qlikConfig.dimensions, false);
+      let ret = this.setDefaultStateIfEmpty('dimension', this.qlikConfig.dimensions, false);
+      if(ret) {
+        this.selectDimension(ret);
+      }
     };
     this.dimensionField = this.qlikService.field([this.qlikConfig["dimension-field"]], this.dimensionFieldListener);
     this.dimensionFieldListener();
@@ -138,8 +141,10 @@ class menuTabRightController {
           }
         });
       });
-      this.setDefaultStateIfEmpty('measure', this.qlikConfig.measures, false);
-      //this.onMeasureChanged({ measure: this.measure });
+      let ret = this.setDefaultStateIfEmpty('measure', this.qlikConfig.measures, false);
+      if(ret) {
+        this.selectMeasure(ret);
+      }
     };
     this.measureField = this.qlikService.field([this.qlikConfig["measure-field"]], this.measureFieldListener);
     this.measureFieldListener();

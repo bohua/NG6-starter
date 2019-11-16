@@ -21,7 +21,7 @@
                         </li>
                     </ul>
                     <div>
-                      <h2>ÉCARTS</h2>
+                      <h2>{{$ctrl.topTableTitle}}</h2>
                       <div class="table-wrapper">
                         <div id="QV05" class="scrolling-container">
                           <straight-table headers="$ctrl.tableHeaders" data="$ctrl.tableData" total="$ctrl.tableTotalRow"></straight-table>
@@ -34,7 +34,7 @@
             <div class="row">
               <div class="col col-left">
                 <div class="custom-content-wrapper tab-border" ng-show="$ctrl.viewMode=='table'">
-                  <h2>{{$ctrl.measure.title}}</h2>
+                  <h2>{{$ctrl.midTableTitle}}</h2>
                   <ul class=" nav nav-tabs icoTab">
                     <li class="nav-item" ><a class="nav-link" ng-click="$ctrl.exportData('kpi', 'table')">Exporter</a></li>
                   </ul>
@@ -52,7 +52,7 @@
                   <ul class=" nav nav-tabs icoTab">
                     <li class="nav-item" ><a class="nav-link" ng-click="$ctrl.exportData('dist', 'table')">Exporter</a> </li>
                   </ul>
-                  <h2>Distribution par {{$ctrl.stack.title}}</h2>
+                  <h2>{{$ctrl.botTableTitle}}</h2>
                   <div class="table-wrapper">
                     <div id="QV07" class="scrolling-container">
                       <straight-table headers="$ctrl.tableHeadersStack" data="$ctrl.tableDataStack" total="$ctrl.tableTotalRowStack"></straight-table>
