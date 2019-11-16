@@ -15,9 +15,9 @@
             "stacks": [
                 1,
                 2,
-                3,
                 4,
-                5
+                5,
+                3
             ]
         },
         {
@@ -32,9 +32,9 @@
             "stacks": [
                 1,
                 2,
-                3,
                 4,
-                5
+                5,
+                3
             ]
         },
         {
@@ -166,8 +166,9 @@
         },
         {
             "id": 3,
-            "title": "Typ/Atyp",
-            "value": "Typ/Atyp"
+            "title": "Atypiques / Typiques",
+            "value": "Typ/Atyp",
+            "long": true
         },
         {
             "id": 4,

@@ -48,7 +48,7 @@
             <div class="col-xl-12 button-wrap">
               <div class="buttons button-active">
                 <ul class="nav nav-tabs">
-                  <li class="btn-stack" ng-repeat="stack in $ctrl.stacks | orderBy:'id'"
+                  <li class="btn-stack" ng-repeat="stack in $ctrl.stacks"
                     ng-class="{'btn-full': stack.long}" ng-click="$ctrl.selectFilter(stack)">
                     <a ng-class="{active: stack.value==$ctrl.stack.value}">{{stack.title}}</a>
                   </li>
